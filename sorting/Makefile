@@ -1,5 +1,5 @@
 SRC_PATH := .
-DFILE_PATH := $(SRC_PATH)/dFiles
+DFILE_PATH := ./dFiles
 OBJ_PATH := ./obj
 BIN_PATH := .
 
@@ -20,6 +20,16 @@ all: $(EXE)
 
 $(EXE): $(OBJECTS)
 	$(CXX) $^ -o $@
+
+$(OBJECTS): | $(OBJ_PATH)
+
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)
+
+$(DFILES): | $(DFILE_PATH)
+
+$(DFILE_PATH):
+	mkdir -p $(DFILE_PATH)
 
 include $(DFILES)
 
