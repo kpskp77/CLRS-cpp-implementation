@@ -1,8 +1,8 @@
-#include "sorting.h"
-
 #include <chrono>
 #include <iostream>
 #include <random>
+
+#include "sorting.h"
 
 using timer = std::chrono::high_resolution_clock;
 
@@ -15,8 +15,8 @@ int main() {
     for (auto i = size; i > 0; --i) {
         // d.push_back(i);
         d.push_back(randgen());
-        // std::cout << i << '\n';
     }
+    // std::cout << d << '\n';
 
     auto start = timer::now();
     d.insertSorting();

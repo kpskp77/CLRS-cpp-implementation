@@ -1,27 +1,26 @@
 #include "sorting.h"
 
-void Sorting::insertSorting() {
+void Sorting::insertSorting(iterator begin, iterator end) {
     using std::swap;
-    for (auto it = ++data_.begin(); it != data_.end(); ++it)
-        for (auto iit = it; iit != data_.begin() && *(iit - 1) > *iit; --iit)
-            swap(*(iit - 1), *iit);
+    for (auto it = begin + 1; it != end; ++it)
+        for (auto iit = it; iit != begin && *(iit - 1) > *iit; --iit) swap(*(iit - 1), *iit);
 }
 
-void Sorting::selectSorting() {
+void Sorting::selectSorting(iterator begin, iterator end) {
     using std::swap;
-    for (auto it = data_.begin(); it != data_.end() - 1; ++it)
-        for (auto iit = it + 1; iit != data_.end(); ++iit)
-            if (*it > *iit) swap(*it, *iit);
+    for (; begin != end - 1; ++begin)
+        for (auto it = begin + 1; it != end; ++it)
+            if (*begin > *it) swap(*begin, *it);
 }
 
-void Sorting::bubbleSorting() {
+void Sorting::bubbleSorting(iterator begin, iterator end) {
     using std::swap;
     bool swapped = true;
-    for (auto it = --data_.end(); swapped && it != data_.begin(); --it) {
+    for (--end; swapped && end != begin; --end) {
         swapped = false;
-        for (auto iit = data_.begin(); iit != it; ++iit)
-            if (*iit > *(iit + 1)) {
-                swap(*iit, *(iit + 1));
+        for (auto it = begin; it != end; ++it)
+            if (*it > *(it + 1)) {
+                swap(*it, *(it + 1));
                 swapped = true;
             }
     }
