@@ -1,0 +1,1512 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"swap",
+				"swapped"
+			],
+			[
+				"data",
+				"data_type	data_type"
+			],
+			[
+				"Mater",
+				"Material-Theme"
+			],
+			[
+				"gpio",
+				"gpioConfigPtr"
+			],
+			[
+				"pus",
+				"push_back	void push_back(value_type &&__x)"
+			],
+			[
+				"tye",
+				"typename"
+			],
+			[
+				"resul",
+				"result_of_helper_impl"
+			],
+			[
+				"void",
+				"void_type"
+			],
+			[
+				"commo",
+				"common_type2"
+			],
+			[
+				"is_trii",
+				"is_trivially_destructible"
+			],
+			[
+				"tur",
+				"true_type"
+			],
+			[
+				"is_converti",
+				"is_convertible_test_impl"
+			],
+			[
+				"is_conve",
+				"is_convertible_test"
+			],
+			[
+				"select",
+				"select_2nd"
+			],
+			[
+				"char16_t",
+				"char16_t	(type_traits.h)"
+			],
+			[
+				"underl",
+				"underlying_type"
+			],
+			[
+				"under",
+				"underlying_type"
+			],
+			[
+				"is_unsigned",
+				"is_unsigned_helper"
+			],
+			[
+				"is_constructest",
+				"is_constructible_ref_test"
+			],
+			[
+				"temp",
+				"template"
+			],
+			[
+				"type",
+				"typename"
+			],
+			[
+				"remo",
+				"remove_extent"
+			],
+			[
+				"is_triviall",
+				"is_trivially_assignable"
+			],
+			[
+				"is_ass",
+				"is_assignable_test"
+			],
+			[
+				"name",
+				"namespace"
+			],
+			[
+				"is_con",
+				"is_constructible"
+			],
+			[
+				"fals",
+				"false_type"
+			],
+			[
+				"is_vo",
+				"is_volatile	(type_traits.h)"
+			],
+			[
+				"is_fun",
+				"is_fundamental"
+			],
+			[
+				"bool",
+				"bool_constant"
+			],
+			[
+				"is_member",
+				"is_member_pointer_helper"
+			],
+			[
+				"unio",
+				"union_or_class_test"
+			],
+			[
+				"remove",
+				"remove_cv"
+			],
+			[
+				"null",
+				"nullptr_t"
+			],
+			[
+				"true",
+				"true_type	(type_traits.h)"
+			],
+			[
+				"inter",
+				"intergal_constant"
+			],
+			[
+				"na",
+				"namespace	(faq.md)"
+			],
+			[
+				"pri",
+				"print"
+			],
+			[
+				"con",
+				"constexpr"
+			],
+			[
+				"co",
+				"copyable_ptr"
+			],
+			[
+				"pro",
+				"protectIntB"
+			],
+			[
+				"punc",
+				"punctuator"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 173,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sorting/test.cpp",
+			"settings":
+			{
+				"buffer_size": 643,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sorting/sorting.cpp",
+			"settings":
+			{
+				"buffer_size": 965,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "sorting/sorting.h",
+			"settings":
+			{
+				"buffer_size": 555,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/EasyClangComplete.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 2342,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/mingw32-make.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/mingw32-make.sublime-build",
+					""
+				],
+				[
+					"Packages/User/mingw32-make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/User/mingw32-make.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				"Clean"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/Markdown Preview/Markdown.sublime-build",
+					""
+				],
+				[
+					"Packages/User/mingw32-make.sublime-build",
+					""
+				],
+				[
+					"Packages/User/mingw32-make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Markdown Preview/Markdown.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/mingw32-make.sublime-build",
+					""
+				],
+				[
+					"Packages/User/mingw32-make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/User/mingw32-make.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "markdown",
+		"selected_items":
+		[
+			[
+				"markdown",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"package",
+				"Package Control: Enable Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"clang",
+				"EasyClangComplete: Open completion triggers location"
+			],
+			[
+				"prv",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"lis",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"upgrade",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"mat",
+				"Material Theme: Info"
+			],
+			[
+				"upgra",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"markd",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			],
+			[
+				"snippet swap",
+				"Snippet: swap"
+			],
+			[
+				"Snippet: ",
+				"Snippet: swap"
+			],
+			[
+				"syncing",
+				"Package Syncing: Push Settings"
+			],
+			[
+				"mard",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"vme",
+				"View: Toggle Menu"
+			],
+			[
+				"packge syn",
+				"Package Syncing: Define Sync Folder"
+			]
+		],
+		"width": 446.0
+	},
+	"console":
+	{
+		"height": 195.0,
+		"history":
+		[
+			"sublime.settings()",
+			"sublime.file_name()",
+			"sublime.version()",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(true)",
+			"sublime.log_commands(False)",
+			"insert_snippet(\"{$0}\")",
+			"insert_snippet {\"contents\": \"{$0}\"}",
+			"sublime.log_commands(True)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/sublime-text-project/cpp_algorithm",
+		"/D/sublime-text-project/cpp_algorithm/sorting",
+		"/D/sublime-text-project/cpp_algorithm/sorting/obj"
+	],
+	"file_history":
+	[
+		"/f/workspace/ip_repo/myip_1.0/hdl/myip_v1_0.v",
+		"/D/sublime-text-project/cpp_algorithm/sorting/Makefile",
+		"/D/sublime-text-project/cpp_algorithm/cpp_algorithm.sublime-project",
+		"/D/sublime-text-project/cpp_learning/.clang_complete",
+		"/D/sublime-text-project/demo/src/foo.cpp",
+		"/D/sublime-text-project/demo/include/foo.h",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/faq&notes.html",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/faq&notes.md",
+		"/F/workspace/project_1/project_1.sdk/hello_world/src/helloworld.c",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/faq.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/faq.html",
+		"/D/znyq_demo/znyq_demo.sdk/hello_world/src/helloworld.c",
+		"/D/_doc/Xilinx/Zynq-7000/ug1165-zynq-embedded-design-tutorial/helloworld.c",
+		"/D/tof-camera/ESPROS_TOF-Imager_Evaluation_Kit_Software_v1.4.1/src_server_cp/Makefile",
+		"/D/sublime-text-project/demo/Makefile",
+		"/F/Lyrics/达达乐队 - 化学心情下的爱情反应.lrc",
+		"/F/Lyrics/达达乐队 - SONG F.lrc",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/How is an expression evaluated.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/How is an expression evaluated.html",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/EasyClangComplete.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/EasyClangComplete.sublime-settings",
+		"/D/sublime-text-project/demo/.clang_complete",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/tests/test.cpp",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/tests/test_vector.cpp",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Clang-Complete/makefile",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Clang-Complete/cc.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/D/sublime-text-project/demo/demo_c++.sublime-project",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/Preferences.sublime-settings",
+		"/D/sublime-text-project/demo/include/copyable_ptr.h",
+		"/D/sublime-text-project/demo/src/demoOperator.cpp",
+		"/D/sublime-text-project/demo/include/demoOperator.h",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/README.md",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/.clang_complete",
+		"/D/sublime-text-project/demo/include/type_traits.h",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Material Theme/README.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/initialization.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/initialization.html",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/mingw32-make.sublime-build",
+		"/D/sublime-text-project/demo_c++ - Copy.sublime-workspacegg",
+		"/D/sublime-text-project/demo_c++ - Copy.sublime-projectgg",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/swap.sublime-snippet",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/Terminal.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/Preferences.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/ClangAutoComplete/ClangAutoComplete.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/ClangAutoComplete.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/backrefs/readme.md",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/CMake/README.md",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/clang_format_custom.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/namespace-..-(namespace).sublime-snippet",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/Package Control.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/Terminal.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/mingw32-make.sublime-build",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/MarkdownPreview.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/EasyClangComplete.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/Default (Windows).sublime-keymap",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/clang_format_custom.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/clang_format.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/bh_core.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Clang Format/clang_format_custom.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Odds and Ends/my_type_traits.h",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/BracketHighlighter/bh_core.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/bh_core.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Clang Format/clang_format.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/clang_format.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/implicit-conversion.md",
+		"/C/Users/Carousel/Dropbox/Odds and Ends/Tips.txt",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/notes.md",
+		"/D/sublime-text-project/demo/src/A.cpp",
+		"/D/sublime-text-project/demo/include/A.h",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C/LearningNotes/declaration.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/notes.html",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C/LearningNotes/home.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C/LearningNotes/external_definition.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/notes-on-cppreference.com.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/ReadingMaterials/Why Not Specialize Function Templates.md",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/ReadingMaterials/Why Not Specialize Function Templates.html",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Markdown Preview/MarkdownPreview.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/MarkdownPreview.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Documents/Programming Languages/C++/LearningNotes/const-constexpr-const_expression.md",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/four-and-a-half.sublime-snippet",
+		"/D/tof-camera/ESPROS_TOF-Imager_Evaluation_Kit_Software_v1.4.1/install/server/win/restart.bat",
+		"/D/tof-camera/ESPROS_TOF-Imager_Evaluation_Kit_Software_v1.4.1/install/server/win/setup.bat",
+		"/D/tof-camera/ESPROS_TOF-Imager_Evaluation_Kit_Software_v1.4.1/install/server/bin/loadMain.service",
+		"/D/tof-camera/ESPROS_TOF-Imager_Evaluation_Kit_Software_v1.4.1/install/server/bin/uEnv.txt",
+		"/D/tof-camera/ESPROS_TOF-Imager_Evaluation_Kit_Software_v1.4.1/_Readme.txt",
+		"/G/uEnv.txt",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/swap-definition.sublime-snippet",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/five-and-a-half.sublime-snippet",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/class-..-(class).sublime-snippet",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/swap-declaration.sublime-snippet",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/Snippets/#ifndef-#define-#endif.sublime-snippet",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/C++.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/Macros/Auto-End Line With Semicolon.sublime-macro",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/Macros/Auto-Brackets.sublime-macro",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/User/Package Syncing.sublime-settings",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Package Syncing/Package Syncing.sublime-settings",
+		"/C/Users/Carousel/Dropbox/Sublime text 3/Package Syncing - Copy.sublime-settings",
+		"/D/sublime-text-project/demo_c++.sublime-project",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Clang Format/Default (Windows).sublime-keymap",
+		"/D/sublime-text-project/demo/src/color.cpp",
+		"/D/sublime-text-project/demo/src/animal.cpp",
+		"/D/sublime-text-project/demo/include/animal.h",
+		"/D/sublime-text-project/demo/src/file1.cpp",
+		"/D/sublime-text-project/demo/src/dog.cpp",
+		"/D/sublime-text-project/demo/include/file1.h",
+		"/D/sublime-text-project/demo/include/dog.h",
+		"/D/sublime-text-project/demo/include/defs.h",
+		"/D/sublime-text-project/demo/include/color.h",
+		"/C/Users/Carousel/Dropbox/Odds and Ends/build-clang-with-mingw-w64.md",
+		"/C/Users/Carousel/Dropbox/Odds and Ends/build-clang-with-mingw-w64.html",
+		"/D/sublime-text-project/demo/src/main.cpp",
+		"/F/build-clang-with-mingw-w64.md",
+		"/F/Download/build/log",
+		"/C/msys64/var/log/pacman.log",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/Default/exec.py",
+		"/C/msys64/msys2_shell.cmd",
+		"/C/Program Files (x86)/Microsoft Visual Studio 14.0/VC/vcvarsall.bat",
+		"/C/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/Tools/VsDevCmd.bat",
+		"/C/MinGW/include/c++/6.1.0/x86_64-w64-mingw32/bits/c++config.h",
+		"/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/C++/C++ Single File.sublime-build",
+		"/C/MinGW/open_distro_window.bat",
+		"/C/MinGW/set_distro_paths.bat"
+	],
+	"find":
+	{
+		"height": 29.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"clock",
+			"now",
+			"iit",
+			"ahead",
+			"end note",
+			"Note",
+			"X",
+			"([BXM])([^&])",
+			"([BXM]&)",
+			"end note",
+			"Note",
+			"Point const &",
+			"Point const *",
+			"size_t",
+			"s1",
+			"solutions",
+			"refreshName",
+			"([XM])",
+			" \\(\\[[^\\]]+\\]\\)",
+			"(^[\\w])",
+			"ledpin",
+			"Gpio",
+			"...\n",
+			"normal",
+			"B",
+			"\\",
+			"cause",
+			"D",
+			"B",
+			"B::f",
+			"D::f",
+			"Derived",
+			"Base",
+			"/",
+			"/ $",
+			"\\[",
+			"[",
+			"  ",
+			"*>;",
+			"\\",
+			"- *end note*",
+			"\\- *end",
+			"class.protected",
+			"```",
+			"Der",
+			"```\n",
+			"Base::__vtable",
+			"Circle",
+			"\\",
+			"indent",
+			"\\",
+			"- \\*end note\\*",
+			"[^-]- \\*end note\\*",
+			"namespace",
+			"std::is_same(",
+			"static_assert\\((.*)\\)::value",
+			"int",
+			"result_of_helper_impl",
+			"result_of_helper",
+			"decay_t",
+			"using",
+			"is_nothrow_destructible",
+			"__declval",
+			"is_nothrow_constructible_helper",
+			"is_constructible_helper",
+			"remove_all_extents",
+			"is_constructible_ref_test",
+			"is_trivially_copy_assignable",
+			"=",
+			"struct",
+			"typename",
+			"is_object",
+			"declval",
+			"detail::declval",
+			"select_2nd",
+			"any",
+			"declval",
+			"is_convertible",
+			"is_constructible",
+			"&&",
+			"bool_constant",
+			"is_class",
+			"is_base_of_src",
+			"is_base_of_dst",
+			"class",
+			"is_same",
+			"int[]",
+			"0",
+			"bool",
+			"bool_constant",
+			"column",
+			"make_signed_help",
+			"make_signed_helper_impl",
+			"make_signed_helper_impl2",
+			"make_signed_helper",
+			"make_signed_help",
+			"typename T",
+			"width",
+			"is_unsigned_helper",
+			"is_unsigned_helper_impl",
+			"is_refe",
+			"is_enum",
+			"enable_if",
+			"most_stringent_alignment_requirement",
+			"is_void",
+			"is_constructible_help",
+			"is_regular_function",
+			"std::true_type",
+			"is_function",
+			"is_void",
+			"std",
+			"add_rvalue_reference",
+			"using",
+			"class",
+			"declval",
+			"std::declval",
+			"conditional",
+			"std",
+			"typename add_lvalue_reference<typename add_const<T>::type>::type",
+			"Foo",
+			"int",
+			"add_lvalue_reference",
+			"copy_constructible",
+			"is_copy_constructible",
+			"default_constructible",
+			"add_lvalue_reference",
+			"const",
+			"add_pointer"
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"`$1`$2",
+			"`$1`",
+			"",
+			"- $1",
+			"A",
+			"/",
+			"B",
+			"A",
+			" ",
+			"",
+			"\\n[",
+			"\\\\",
+			"— *end note*",
+			"\\\\",
+			"/",
+			"-- *end note*",
+			"std::is_same<",
+			"static_assert<$1>::value, \"ERROR\"",
+			"= std::",
+			"__declval",
+			"declval",
+			"__select_2nd",
+			"make_unsigned_help",
+			"",
+			"is_constructible_helper",
+			"true_type",
+			"is_member_function",
+			"detail::declval",
+			"declval",
+			"is_member_function_pointer",
+			"is_function",
+			"C",
+			"is_member_function_pointer",
+			"Ret (ClassT::*)(Args",
+			"typename Ret, typename ClassT,",
+			"..., ...",
+			"typename",
+			"typename remove_cv<T>::type",
+			"remove_cv<T>::type",
+			"T, unsigned",
+			"**$1**",
+			"*$1*",
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+			"*$1*",
+			"*2.",
+			"Okay",
+			"Error",
+			"'",
+			"-",
+			"`T`",
+			"-",
+			"`T` ",
+			"-",
+			"remove_reference",
+			"$2 $1",
+			"std::ostream",
+			"std::endl",
+			"std::cout",
+			"$1\\u$2",
+			"/mingw/bin/",
+			"'",
+			"DemoOperator",
+			"'",
+			"album",
+			"artist"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 173,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								159,
+								159
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sorting/test.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								504,
+								504
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										642,
+										643
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										141,
+										142
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 191.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "sorting/sorting.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 965,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								599,
+								599
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										598,
+										599
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										408,
+										409
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sorting/sorting.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 555,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								128,
+								128
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										545,
+										546
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										90,
+										91
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Carousel/AppData/Roaming/Sublime Text 3/Packages/EasyClangComplete/EasyClangComplete.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2340,
+										2341
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content"
+							],
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.cc":
+	{
+		"height": 128.0
+	},
+	"output.exec":
+	{
+		"height": 183.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 134.0
+	},
+	"pinned_build_system": "",
+	"project": "cpp_algorithm.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 227.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
