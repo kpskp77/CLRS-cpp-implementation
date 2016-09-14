@@ -19,7 +19,7 @@ int main() {
     }
 
     auto start = timer::now();
-    // d.insertSorting();
+    d.insertSorting();
     // d.selectSorting();
     // d.bubbleSorting();
     diff = timer::now() - start;
