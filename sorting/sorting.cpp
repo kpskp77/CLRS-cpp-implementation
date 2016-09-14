@@ -16,7 +16,7 @@ void Sorting::selectSorting(iterator begin, iterator end) {
 void Sorting::bubbleSorting(iterator begin, iterator end) {
     using std::swap;
     bool swapped = true;
-    for (--end; swapped && end != begin; --end) {
+    for (; swapped && --end != begin;) {
         swapped = false;
         for (auto it = begin; it != end; ++it)
             if (*it > *(it + 1)) {
