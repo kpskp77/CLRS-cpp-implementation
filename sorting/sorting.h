@@ -17,7 +17,7 @@ class Sorting {
 
     void push_back(element_type const &i) { data_.push_back(i); }
     void push_back(element_type &&i) { data_.push_back(std::move(i)); }
-    void reserve(size_type capicity) { data_.reserve(capicity); }
+    void reserve(size_type capacity) { data_.reserve(capacity); }
 
     void insertSorting() { insertSorting(data_.begin(), data_.end()); }
     void selectSorting() { selectSorting(data_.begin(), data_.end()); }

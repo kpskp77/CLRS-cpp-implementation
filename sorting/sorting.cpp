@@ -27,6 +27,7 @@ void Sorting::bubbleSorting(iterator begin, iterator end) {
 }
 
 void Sorting::mergeSorting(iterator begin, iterator end) {
+    /* normal merge sorting implementation
     using std::swap;
     if (!isSorted(begin, end)) {
         if (end - begin == 2) {
@@ -38,6 +39,18 @@ void Sorting::mergeSorting(iterator begin, iterator end) {
             merge(begin, middle, end);
         }
     }
+    //--------------------------------------------------*/
+
+    //* optimaze using insert sorting for small lenght
+    if (end - begin <= 40) {
+        insertSorting(begin, end);
+    } else {
+        auto middle = begin + (end - begin) / 2;
+        mergeSorting(begin, middle);
+        mergeSorting(middle, end);
+        merge(begin, middle, end);
+    }
+    //--------------------------------------------------*/
 }
 
 void Sorting::merge(iterator begin, iterator middle, iterator end) {
@@ -63,12 +76,11 @@ void Sorting::merge(iterator begin, iterator middle, iterator end) {
 
 bool Sorting::isSorted(iterator begin, iterator end) {
     auto sorted = true;
-    if (begin != end)            // if not empty
-        while (++begin != end) { // has more than one element
-            if (*(begin - 1) > *begin) {
-                sorted = false;
-                break;
-            }
+    while (++begin != end) { // has more than one element
+        if (*(begin - 1) > *begin) {
+            sorted = false;
+            break;
         }
+    }
     return sorted;
 }

@@ -1,5 +1,5 @@
 *.exe
 **/dFiles/
 **/obj/
-cpp_algorithm.sublime-project
-cpp_algorithm.sublime-workspace
+*.sublime-project
+*.sublime-workspace
