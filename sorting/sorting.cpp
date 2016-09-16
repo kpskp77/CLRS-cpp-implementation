@@ -16,7 +16,7 @@ void Sorting::selectSorting(iterator begin, iterator end) {
 void Sorting::bubbleSorting(iterator begin, iterator end) {
     using std::swap;
     auto swapped = true;
-    for (; swapped && --end != begin;) {
+    while (swapped && --end != begin) {
         swapped = false;
         for (auto it = begin; it != end; ++it)
             if (*it > *(it + 1)) {
@@ -24,4 +24,51 @@ void Sorting::bubbleSorting(iterator begin, iterator end) {
                 swapped = true;
             }
     }
+}
+
+void Sorting::mergeSorting(iterator begin, iterator end) {
+    using std::swap;
+    if (!isSorted(begin, end)) {
+        if (end - begin == 2)
+            swap(*begin, *--end);
+        else {
+            auto middle = begin + (end - begin) / 2;
+            mergeSorting(begin, middle);
+            mergeSorting(middle, end);
+            merge(begin, middle, end);
+        }
+    }
+}
+
+void Sorting::merge(iterator begin, iterator middle, iterator end) {
+    data_type d;
+    auto top1 = begin, top2 = middle;
+    while (true) {
+        if (top1 == middle) {
+            d.insert(d.end(), top2, end);
+            break;
+        } else if (top2 == end) {
+            d.insert(d.end(), top1, middle);
+            break;
+        } else if (*top1 > *top2) {
+            d.push_back(std::move(*top2));
+            ++top2;
+        } else {
+            d.push_back(std::move(*top1));
+            ++top1;
+        }
+    }
+    std::move(d.begin(), d.end(), begin);
+}
+
+bool Sorting::isSorted(iterator begin, iterator end) {
+    auto sorted = true;
+    if (begin != end)            // if not empty
+        while (++begin != end) { // has more than one element
+            if (*(begin - 1) > *begin) {
+                sorted = false;
+                break;
+            }
+        }
+    return sorted;
 }
