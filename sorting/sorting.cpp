@@ -29,9 +29,9 @@ void Sorting::bubbleSorting(iterator begin, iterator end) {
 void Sorting::mergeSorting(iterator begin, iterator end) {
     using std::swap;
     if (!isSorted(begin, end)) {
-        if (end - begin == 2)
+        if (end - begin == 2) {
             swap(*begin, *--end);
-        else {
+        } else {
             auto middle = begin + (end - begin) / 2;
             mergeSorting(begin, middle);
             mergeSorting(middle, end);
@@ -42,13 +42,13 @@ void Sorting::mergeSorting(iterator begin, iterator end) {
 
 void Sorting::merge(iterator begin, iterator middle, iterator end) {
     data_type d;
+    d.reserve(end - begin);
     auto top1 = begin, top2 = middle;
     while (true) {
         if (top1 == middle) {
-            d.insert(d.end(), top2, end);
             break;
         } else if (top2 == end) {
-            d.insert(d.end(), top1, middle);
+            std::move_backward(top1, middle, end);
             break;
         } else if (*top1 > *top2) {
             d.push_back(std::move(*top2));
