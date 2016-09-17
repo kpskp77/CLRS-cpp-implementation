@@ -1,5 +1,6 @@
 *.exe
-**/dFiles/
-**/obj/
+dFiles/
+obj/
 *.sublime-project
 *.sublime-workspace
+.clang_complete
