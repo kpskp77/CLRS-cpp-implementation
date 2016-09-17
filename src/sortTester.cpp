@@ -8,68 +8,57 @@
 
 using timer = std::chrono::high_resolution_clock;
 
-SortTester::SortTester() {
-    options[SortOptions::MERGE] = 0;
-    options[SortOptions::INSERT] = 0;
-    options[SortOptions::BUBBLE] = 0;
-    options[SortOptions::SELECT] = 0;
-    options[SortOptions::BEST] = 0;
-    options[SortOptions::RANDOM] = 0;
-    options[SortOptions::WORST] = 0;
-    options[SortOptions::SIZE] = 100;
-    options[SortOptions::SHOWELEMENT] = 0;
-}
+enum struct SortTester::SortOptions {
+    SHOWELEMENT = 0,
+    BEST,
+    RANDOM,
+    WORST,
+    INSERT,
+    SELECT,
+    BUBBLE,
+    MERGE,
+    SIZE_COUNT
+};
+
+SortTester::SortTester() : options(static_cast<int>(SortOptions::SIZE_COUNT), false) {}
 
 void SortTester::test() {
     std::mt19937 randgen;
     randgen.seed(1);
-    auto size = options[SortOptions::SIZE];
     sort.reserve(size);
     for (auto i = size; i > 0; --i) {
-        if (options[SortOptions::RANDOM]) sort.push_back(randgen());
-        if (options[SortOptions::BEST]) sort.push_back(-i);
-        if (options[SortOptions::WORST]) sort.push_back(i);
+        if (options[static_cast<int>(SortOptions::RANDOM)]) sort.push_back(randgen());
+        if (options[static_cast<int>(SortOptions::BEST)]) sort.push_back(-i);
+        if (options[static_cast<int>(SortOptions::WORST)]) sort.push_back(i);
     }
     std::cout << "number of element: " << size << "\ttest mode: "
-              << (options[SortOptions::RANDOM]
+              << (options[static_cast<int>(SortOptions::RANDOM)]
                       ? "random case"
-                      : (options[SortOptions::BEST] ? "best case" : "worst case"))
+                      : (options[static_cast<int>(SortOptions::BEST)] ? "best case" : "worst case"))
               << '\n';
 
-    if (options[SortOptions::SHOWELEMENT]) std::cout << "Original data:\n" << sort << "\n\n";
+    if (options[static_cast<int>(SortOptions::SHOWELEMENT)])
+        std::cout << "Original data:\n" << sort << "\n\n";
+
+    if (options[static_cast<int>(SortOptions::INSERT)])
+        runTest(&Sorting::insertSorting, SortOptions::INSERT);
+    if (options[static_cast<int>(SortOptions::SELECT)])
+        runTest(&Sorting::selectSorting, SortOptions::SELECT);
+    if (options[static_cast<int>(SortOptions::BUBBLE)])
+        runTest(&Sorting::bubbleSorting, SortOptions::BUBBLE);
+    if (options[static_cast<int>(SortOptions::MERGE)])
+        runTest(&Sorting::mergeSorting, SortOptions::MERGE);
+}
+
+void SortTester::runTest(void (Sorting::*sorting)(), SortOptions op) {
+    auto local = sort;
     std::chrono::duration<double> diff;
-    if (options[SortOptions::INSERT]) {
-        auto local = sort;
-        auto start = timer::now();
-        local.insertSorting();
-        diff = timer::now() - start;
-        std::cout << "time for insert sorting: " << diff.count() << " seconds\n";
-        if (options[SortOptions::SHOWELEMENT]) std::cout << "Sorted data:\n" << local << "\n\n";
-    }
-    if (options[SortOptions::SELECT]) {
-        auto local = sort;
-        auto start = timer::now();
-        local.selectSorting();
-        diff = timer::now() - start;
-        std::cout << "time for select sorting: " << diff.count() << " seconds\n";
-        if (options[SortOptions::SHOWELEMENT]) std::cout << "Sorted data:\n" << local << "\n\n";
-    }
-    if (options[SortOptions::BUBBLE]) {
-        auto local = sort;
-        auto start = timer::now();
-        local.bubbleSorting();
-        diff = timer::now() - start;
-        std::cout << "time for bubble sorting: " << diff.count() << " seconds\n";
-        if (options[SortOptions::SHOWELEMENT]) std::cout << "Sorted data:\n" << local << "\n\n";
-    }
-    if (options[SortOptions::MERGE]) {
-        auto local = sort;
-        auto start = timer::now();
-        local.mergeSorting();
-        diff = timer::now() - start;
-        std::cout << "time for merge sorting: " << diff.count() << " seconds\n";
-        if (options[SortOptions::SHOWELEMENT]) std::cout << "Sorted data:\n" << local << "\n\n";
-    }
+    auto start = timer::now();
+    (local.*sorting)();
+    diff = timer::now() - start;
+    std::cout << "time for " << getSortingName(op) << " sorting: " << diff.count() << " seconds\n";
+    if (options[static_cast<int>(SortOptions::SHOWELEMENT)])
+        std::cout << "Sorted data:\n" << local << "\n\n";
 }
 
 bool SortTester::parseOpts(const int argc, const char **argv) {
@@ -81,21 +70,21 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
             if (s[0] == '-' && s[1] != '-') {
                 for (auto it = s.cbegin() + 1; it != s.cend(); ++it) {
                     switch (*it) {
-                    case 'm': options[SortOptions::MERGE] = 1; break;
-                    case 'i': options[SortOptions::INSERT] = 1; break;
-                    case 'b': options[SortOptions::BUBBLE] = 1; break;
-                    case 's': options[SortOptions::SELECT] = 1; break;
-                    case 'B': options[SortOptions::BEST] = 1; break;
-                    case 'W': options[SortOptions::WORST] = 1; break;
-                    case 'R': options[SortOptions::RANDOM] = 1; break;
-                    case 'D': options[SortOptions::SHOWELEMENT] = 1; break;
+                    case 'm': options[static_cast<int>(SortOptions::MERGE)] = true; break;
+                    case 'i': options[static_cast<int>(SortOptions::INSERT)] = true; break;
+                    case 'b': options[static_cast<int>(SortOptions::BUBBLE)] = true; break;
+                    case 's': options[static_cast<int>(SortOptions::SELECT)] = true; break;
+                    case 'B': options[static_cast<int>(SortOptions::BEST)] = true; break;
+                    case 'W': options[static_cast<int>(SortOptions::WORST)] = true; break;
+                    case 'R': options[static_cast<int>(SortOptions::RANDOM)] = true; break;
+                    case 'D': options[static_cast<int>(SortOptions::SHOWELEMENT)] = true; break;
                     default: printHelpMsg(); return false;
                     }
                 }
             } else if (s[0] == '-' && s[1] == '-') {
                 if (s == "--size") {
                     args.pop();
-                    options[SortOptions::SIZE] = std::stoi(args.top());
+                    size = std::stoi(args.top());
                 } else {
                     printHelpMsg();
                     return false;
@@ -111,20 +100,23 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
 }
 
 bool SortTester::validate() {
-    if (options[SortOptions::SIZE] < 1) {
+    if (size < 1) {
         std::cout << "size must greater than 0!\n";
         printHelpMsg();
         return false;
     }
-    if (options[SortOptions::BEST] + options[SortOptions::RANDOM] + options[SortOptions::WORST] !=
+    if (options[static_cast<int>(SortOptions::BEST)] +
+            options[static_cast<int>(SortOptions::RANDOM)] +
+            options[static_cast<int>(SortOptions::WORST)] !=
         1) {
         std::cout << "specify one and only one test mode!\n";
         printHelpMsg();
         return false;
     }
-    if (options[SortOptions::MERGE] + options[SortOptions::INSERT] + options[SortOptions::BUBBLE] +
-            options[SortOptions::SELECT] ==
-        0) {
+    if (!options[static_cast<int>(SortOptions::MERGE)] &&
+        !options[static_cast<int>(SortOptions::INSERT)] &&
+        !options[static_cast<int>(SortOptions::BUBBLE)] &&
+        !options[static_cast<int>(SortOptions::SELECT)]) {
         std::cout << "specify at least one sorting algorithm for test!\n";
         printHelpMsg();
         return false;
@@ -132,4 +124,29 @@ bool SortTester::validate() {
     return true;
 }
 
-void SortTester::printHelpMsg() const { std::cout << "Help message\n"; }
+void SortTester::printHelpMsg() const {
+    std::cout << "Usage:\n"
+              << "\ttest sort <options>\n\n"
+              << "\"options\":\n"
+              << "\t-B  Set test mode as best case\n"
+              << "\t-R  Set test mode as random case\n"
+              << "\t-W  Set test mode as worst case\n"
+              << "\t[Note: must specify one and only one test mode!]\n\n"
+              << "\t-D  print the data before and after sorting\n\n"
+              << "\t-i  test insert sorting\n"
+              << "\t-s  test selection sorting\n"
+              << "\t-b  test bubble sorting\n"
+              << "\t-m  test merge sorting\n"
+              << "\t[Note: specify at least one sorting algorithm to be tested.]\n\n"
+              << "\t--size  set number of data to be sorted\n";
+}
+
+std::string getSortingName(SortTester::SortOptions op) {
+    switch (op) {
+    case SortTester::SortOptions::INSERT: return "insert";
+    case SortTester::SortOptions::SELECT: return "select";
+    case SortTester::SortOptions::BUBBLE: return "bubble";
+    case SortTester::SortOptions::MERGE: return "merge";
+    default: return std::string();
+    }
+}

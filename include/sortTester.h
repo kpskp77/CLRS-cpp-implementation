@@ -4,22 +4,26 @@
 #include "sorting.h"
 #include "tester.h"
 
-#include <map>
-
-enum struct SortOptions { SIZE, SHOWELEMENT, INSERT, SELECT, BUBBLE, MERGE, BEST, RANDOM, WORST };
+#include <vector>
 
 class SortTester : public Tester {
+
   public:
     SortTester();
     void test() override;
     bool parseOpts(const int, const char **) override;
 
   private:
+    enum struct SortOptions;
     Sorting sort;
-    std::map<SortOptions, int> options;
+    std::vector<bool> options;
+    int size = 15;
 
     void printHelpMsg() const;
     bool validate();
+    void runTest(void (Sorting::*)(), SortOptions);
+
+    friend std::string getSortingName(SortOptions);
 };
 
 #endif
