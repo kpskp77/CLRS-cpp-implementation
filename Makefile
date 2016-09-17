@@ -12,8 +12,6 @@ CXX = clang++
 CPPFLAGS = -I./include -std=c++14
 CXXFLAGS = -c -Wall -fno-elide-constructors -pedantic
 
-#clang++ -std=c++14 -Wall -fno-elide-constructors -pedantic -o main.exe main.cpp
-
 .PHONY: all clean
 
 all: $(EXE)

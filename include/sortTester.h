@@ -7,7 +7,6 @@
 #include <vector>
 
 class SortTester : public Tester {
-
   public:
     SortTester();
     void test() override;
@@ -20,8 +19,8 @@ class SortTester : public Tester {
     int size = 15;
 
     void printHelpMsg() const;
-    bool validate();
-    void runTest(void (Sorting::*)(), SortOptions);
+    bool validate() const;
+    void runTest(void (Sorting::*)(), SortOptions) const;
 
     friend std::string getSortingName(SortOptions);
 };

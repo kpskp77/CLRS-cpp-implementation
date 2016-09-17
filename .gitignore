@@ -4,3 +4,4 @@ obj/
 *.sublime-project
 *.sublime-workspace
 .clang_complete
+*log

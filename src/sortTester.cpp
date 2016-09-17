@@ -50,7 +50,7 @@ void SortTester::test() {
         runTest(&Sorting::mergeSorting, SortOptions::MERGE);
 }
 
-void SortTester::runTest(void (Sorting::*sorting)(), SortOptions op) {
+void SortTester::runTest(void (Sorting::*sorting)(), SortOptions op) const {
     auto local = sort;
     std::chrono::duration<double> diff;
     auto start = timer::now();
@@ -99,7 +99,7 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
     return validate();
 }
 
-bool SortTester::validate() {
+bool SortTester::validate() const {
     if (size < 1) {
         std::cout << "size must greater than 0!\n";
         printHelpMsg();
