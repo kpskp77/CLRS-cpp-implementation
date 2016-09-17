@@ -138,10 +138,10 @@ void SortTester::printHelpMsg() const {
               << "\t-b  test bubble sorting\n"
               << "\t-m  test merge sorting\n"
               << "\t[Note: specify at least one sorting algorithm to be tested.]\n\n"
-              << "\t--size  set number of data to be sorted\n";
+              << "\t--size  set number of data to be sorted (default is 15)\n";
 }
 
-std::string getSortingName(SortTester::SortOptions op) {
+std::string SortTester::getSortingName(SortTester::SortOptions op) {
     switch (op) {
     case SortTester::SortOptions::INSERT: return "insert";
     case SortTester::SortOptions::SELECT: return "select";

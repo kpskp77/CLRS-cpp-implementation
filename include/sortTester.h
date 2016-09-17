@@ -21,8 +21,7 @@ class SortTester : public Tester {
     void printHelpMsg() const;
     bool validate() const;
     void runTest(void (Sorting::*)(), SortOptions) const;
-
-    friend std::string getSortingName(SortOptions);
+    static std::string getSortingName(SortOptions);
 };
 
 #endif
