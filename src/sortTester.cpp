@@ -118,19 +118,19 @@ bool SortTester::validate() const {
 
 void SortTester::printHelpMsg() const {
     std::cout << "Usage:\n"
-              << "\ttest sort <options>\n\n"
-              << "\"options\":\n"
+              << "\ttest sort <options>\n"
+              << "\n\"options\":\n"
               << "\t-B  Set test mode as best case\n"
               << "\t-R  Set test mode as random case\n"
               << "\t-W  Set test mode as worst case\n"
-              << "\t[Note: must specify one and only one test mode!]\n\n"
-              << "\t-D  print the data before and after sorting\n\n"
-              << "\t-i  test insert sorting\n"
+              << "\t[Note: must specify one and only one test mode!]\n"
+              << "\n\t-D  print the data before and after sorting\n"
+              << "\n\t-i  test insert sorting\n"
               << "\t-s  test selection sorting\n"
               << "\t-b  test bubble sorting\n"
               << "\t-m  test merge sorting\n"
-              << "\t[Note: specify at least one sorting algorithm to be tested.]\n\n"
-              << "\t--size  set number of data to be sorted (default is 15)\n";
+              << "\t[Note: specify at least one sorting algorithm to be tested.]\n"
+              << "\n\t--size  set number of data to be sorted (default is 15)\n";
 }
 
 std::string SortTester::getSortingName(SortTester::Option op) {

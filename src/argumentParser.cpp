@@ -6,10 +6,7 @@
 std::unique_ptr<Tester> ArgumentParser::parse(int argc, const char **argv) {
     if (argc > 1) {
         std::string s(argv[1]);
-        if (s == "sort") {
-            auto tester = std::make_unique<SortTester>();
-            return tester->parseOpts(argc - 2, argv + 2) ? std::move(tester) : nullptr;
-        }
+        if (s == "sort") return parse<SortTester>(argc - 2, argv + 2);
     }
     printHelpMsg();
     return nullptr;
@@ -17,11 +14,16 @@ std::unique_ptr<Tester> ArgumentParser::parse(int argc, const char **argv) {
 
 void ArgumentParser::printHelpMsg() const {
     std::cout << "Usage:\n"
-              << "\ttest [category] <options>\n\n"
-              << "\"category\"is one of:\n"
-              << "\t1. sort - sort algorithms\n\n"
-              << "\"options\":\n"
+              << "\ttest [category] <options>\n"
+              << "\n\"category\"is one of:\n"
+              << "\tsort - sort algorithms\n"
+              << "\n\"options\":\n"
               << "depends on category. use\n"
               << "\ttest [category] -h\n"
               << "for details\n";
+}
+
+template <class T> std::unique_ptr<Tester> ArgumentParser::parse(int argc, const char **argv) {
+    std::unique_ptr<Tester> tester = std::make_unique<T>();
+    return tester->parseOpts(argc, argv) ? std::move(tester) : nullptr;
 }

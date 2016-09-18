@@ -11,6 +11,7 @@ class ArgumentParser {
 
   private:
     void printHelpMsg() const;
+    template <class T> std::unique_ptr<Tester> parse(int, const char **);
 };
 
 #endif
