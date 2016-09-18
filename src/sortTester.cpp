@@ -18,7 +18,15 @@ enum struct SortTester::Option {
     SIZE_COUNT
 };
 
-SortTester::SortTester() : options(static_cast<int>(Option::SIZE_COUNT), false) {}
+SortTester::SortTester() : options(static_cast<int>(Option::SIZE_COUNT), false) {
+    // default options
+    options[static_cast<int>(Option::MERGE)] = true;
+    options[static_cast<int>(Option::INSERT)] = true;
+    options[static_cast<int>(Option::BUBBLE)] = true;
+    options[static_cast<int>(Option::SELECT)] = true;
+    options[static_cast<int>(Option::SHOWELEMENT)] = true;
+    options[static_cast<int>(Option::WORST)] = true;
+}
 
 void SortTester::test() {
     std::mt19937 randgen;
@@ -58,6 +66,7 @@ void SortTester::runTest(void (Sorting::*sorting)(), Option op) const {
 
 bool SortTester::parseOpts(const int argc, const char **argv) {
     std::stack<std::string> args;
+    unsigned op = 0u;
     for (auto i = argc - 1; i >= 0; --i) args.push(argv[i]);
     while (!args.empty()) {
         auto s = args.top();
@@ -65,14 +74,14 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
         if (s[1] != '-') {
             for (auto it = s.cbegin() + 1; it != s.cend(); ++it) {
                 switch (*it) {
-                case 'm': options[static_cast<int>(Option::MERGE)] = true; break;
-                case 'i': options[static_cast<int>(Option::INSERT)] = true; break;
-                case 'b': options[static_cast<int>(Option::BUBBLE)] = true; break;
-                case 's': options[static_cast<int>(Option::SELECT)] = true; break;
-                case 'B': options[static_cast<int>(Option::BEST)] = true; break;
-                case 'W': options[static_cast<int>(Option::WORST)] = true; break;
-                case 'R': options[static_cast<int>(Option::RANDOM)] = true; break;
-                case 'D': options[static_cast<int>(Option::SHOWELEMENT)] = true; break;
+                case 'B': op |= 0x01u; break;
+                case 'W': op |= 0x02u; break;
+                case 'R': op |= 0x04u; break;
+                case 'D': op |= 0x08u; break;
+                case 'i': op |= 0x10u; break;
+                case 's': op |= 0x20u; break;
+                case 'b': op |= 0x40u; break;
+                case 'm': op |= 0x80u; break;
                 default: return printHelpMsg();
                 }
             }
@@ -83,6 +92,7 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
             return printHelpMsg();
         args.pop();
     }
+    mergeOptions(op);
     return validate();
 }
 
@@ -97,11 +107,6 @@ bool SortTester::validate() const {
         std::cout << "specify one and only one test mode!\n";
         return printHelpMsg();
     }
-    if (!options[static_cast<int>(Option::MERGE)] && !options[static_cast<int>(Option::INSERT)] &&
-        !options[static_cast<int>(Option::BUBBLE)] && !options[static_cast<int>(Option::SELECT)]) {
-        std::cout << "specify at least one sorting algorithm for test!\n";
-        return printHelpMsg();
-    }
     return true;
 }
 
@@ -112,13 +117,14 @@ bool SortTester::printHelpMsg() const {
               << "\t-B  Set test mode as best case\n"
               << "\t-R  Set test mode as random case\n"
               << "\t-W  Set test mode as worst case\n"
-              << "\t[Note: must specify one and only one test mode!]\n"
-              << "\n\t-D  print the data before and after sorting\n"
+              << "\t[Note: must specify one and only one test mode! default is worst case]\n"
+              << "\n\t-D  print the data before and after sorting (default is on for size <= 20, "
+                 "off otherwise)\n"
               << "\n\t-i  test insert sorting\n"
               << "\t-s  test selection sorting\n"
               << "\t-b  test bubble sorting\n"
               << "\t-m  test merge sorting\n"
-              << "\t[Note: specify at least one sorting algorithm to be tested.]\n"
+              << "\t[Note: defult is all on]\n"
               << "\n\t--size  set number of data to be sorted (default is 15)\n";
     return false;
 }
@@ -130,5 +136,21 @@ std::string SortTester::getSortingName(SortTester::Option op) {
     case Option::BUBBLE: return "bubble";
     case Option::MERGE: return "merge";
     default: return std::string();
+    }
+}
+
+void SortTester::mergeOptions(unsigned op) {
+    if (((op >> 4) & 0xFFFFu) && ((op >> 4) ^ 0x000Fu)) {
+        options[static_cast<int>(Option::INSERT)] = (op >> 4) & 0x01u;
+        options[static_cast<int>(Option::SELECT)] = (op >> 5) & 0x01u;
+        options[static_cast<int>(Option::BUBBLE)] = (op >> 6) & 0x01u;
+        options[static_cast<int>(Option::MERGE)] = (op >> 7) & 0x01u;
+    }
+    // if not explicitly trun on printing element and size is too big, turn off printing
+    if (!((op >> 3) & 0x01u) && size > 20) options[static_cast<int>(Option::SHOWELEMENT)] = false;
+    if (op & 0x07u) {
+        options[static_cast<int>(Option::BEST)] = op & 0x01u;
+        options[static_cast<int>(Option::WORST)] = (op >> 1) & 0x01u;
+        options[static_cast<int>(Option::RANDOM)] = (op >> 2) & 0x01u;
     }
 }

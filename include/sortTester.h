@@ -22,6 +22,7 @@ class SortTester : public Tester {
     bool validate() const;
     void runTest(void (Sorting::*)(), Option) const;
     static std::string getSortingName(Option);
+    void mergeOptions(unsigned);
 };
 
 #endif
