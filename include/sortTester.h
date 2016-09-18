@@ -13,15 +13,15 @@ class SortTester : public Tester {
     bool parseOpts(const int, const char **) override;
 
   private:
-    enum struct SortOptions;
+    enum struct Option;
     Sorting sort;
     std::vector<bool> options;
     int size = 15;
 
     void printHelpMsg() const;
     bool validate() const;
-    void runTest(void (Sorting::*)(), SortOptions) const;
-    static std::string getSortingName(SortOptions);
+    void runTest(void (Sorting::*)(), Option) const;
+    static std::string getSortingName(Option);
 };
 
 #endif
