@@ -61,33 +61,32 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
     for (auto i = argc - 1; i >= 0; --i) args.push(argv[i]);
     while (!args.empty()) {
         auto s = args.top();
-        if (s.size() > 1) {
-            if (s[0] == '-' && s[1] != '-') {
-                for (auto it = s.cbegin() + 1; it != s.cend(); ++it) {
-                    switch (*it) {
-                    case 'm': options[static_cast<int>(Option::MERGE)] = true; break;
-                    case 'i': options[static_cast<int>(Option::INSERT)] = true; break;
-                    case 'b': options[static_cast<int>(Option::BUBBLE)] = true; break;
-                    case 's': options[static_cast<int>(Option::SELECT)] = true; break;
-                    case 'B': options[static_cast<int>(Option::BEST)] = true; break;
-                    case 'W': options[static_cast<int>(Option::WORST)] = true; break;
-                    case 'R': options[static_cast<int>(Option::RANDOM)] = true; break;
-                    case 'D': options[static_cast<int>(Option::SHOWELEMENT)] = true; break;
-                    default: printHelpMsg(); return false;
-                    }
-                }
-            } else if (s[0] == '-' && s[1] == '-') {
-                if (s == "--size") {
-                    args.pop();
-                    size = std::stoi(args.top());
-                } else {
-                    printHelpMsg();
-                    return false;
+        if (s.size() == 1 || s[0] != '-') {
+            printHelpMsg();
+            return false;
+        }
+        if (s[1] != '-') {
+            for (auto it = s.cbegin() + 1; it != s.cend(); ++it) {
+                switch (*it) {
+                case 'm': options[static_cast<int>(Option::MERGE)] = true; break;
+                case 'i': options[static_cast<int>(Option::INSERT)] = true; break;
+                case 'b': options[static_cast<int>(Option::BUBBLE)] = true; break;
+                case 's': options[static_cast<int>(Option::SELECT)] = true; break;
+                case 'B': options[static_cast<int>(Option::BEST)] = true; break;
+                case 'W': options[static_cast<int>(Option::WORST)] = true; break;
+                case 'R': options[static_cast<int>(Option::RANDOM)] = true; break;
+                case 'D': options[static_cast<int>(Option::SHOWELEMENT)] = true; break;
+                default: printHelpMsg(); return false;
                 }
             }
         } else {
-            printHelpMsg();
-            return false;
+            if (s == "--size") {
+                args.pop();
+                size = std::stoi(args.top());
+            } else {
+                printHelpMsg();
+                return false;
+            }
         }
         args.pop();
     }

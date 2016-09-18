@@ -12,6 +12,11 @@ std::unique_ptr<Tester> ArgumentParser::parse(int argc, const char **argv) {
     return nullptr;
 }
 
+template <class T> std::unique_ptr<Tester> ArgumentParser::parse(int argc, const char **argv) {
+    std::unique_ptr<Tester> tester = std::make_unique<T>();
+    return tester->parseOpts(argc, argv) ? std::move(tester) : nullptr;
+}
+
 void ArgumentParser::printHelpMsg() const {
     std::cout << "Usage:\n"
               << "\ttest [category] <options>\n"
@@ -21,9 +26,4 @@ void ArgumentParser::printHelpMsg() const {
               << "depends on category. use\n"
               << "\ttest [category] -h\n"
               << "for details\n";
-}
-
-template <class T> std::unique_ptr<Tester> ArgumentParser::parse(int argc, const char **argv) {
-    std::unique_ptr<Tester> tester = std::make_unique<T>();
-    return tester->parseOpts(argc, argv) ? std::move(tester) : nullptr;
 }
