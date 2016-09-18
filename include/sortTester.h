@@ -18,7 +18,7 @@ class SortTester : public Tester {
     std::vector<bool> options;
     int size = 15;
 
-    void printHelpMsg() const;
+    bool printHelpMsg() const;
     bool validate() const;
     void runTest(void (Sorting::*)(), Option) const;
     static std::string getSortingName(Option);

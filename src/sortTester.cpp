@@ -61,10 +61,7 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
     for (auto i = argc - 1; i >= 0; --i) args.push(argv[i]);
     while (!args.empty()) {
         auto s = args.top();
-        if (s.size() == 1 || s[0] != '-') {
-            printHelpMsg();
-            return false;
-        }
+        if (s.size() == 1 || s[0] != '-') return printHelpMsg();
         if (s[1] != '-') {
             for (auto it = s.cbegin() + 1; it != s.cend(); ++it) {
                 switch (*it) {
@@ -76,18 +73,14 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
                 case 'W': options[static_cast<int>(Option::WORST)] = true; break;
                 case 'R': options[static_cast<int>(Option::RANDOM)] = true; break;
                 case 'D': options[static_cast<int>(Option::SHOWELEMENT)] = true; break;
-                default: printHelpMsg(); return false;
+                default: return printHelpMsg();
                 }
             }
-        } else {
-            if (s == "--size") {
-                args.pop();
-                size = std::stoi(args.top());
-            } else {
-                printHelpMsg();
-                return false;
-            }
-        }
+        } else if (s == "--size") {
+            args.pop();
+            size = std::stoi(args.top());
+        } else
+            return printHelpMsg();
         args.pop();
     }
     return validate();
@@ -96,26 +89,23 @@ bool SortTester::parseOpts(const int argc, const char **argv) {
 bool SortTester::validate() const {
     if (size < 1) {
         std::cout << "size must greater than 0!\n";
-        printHelpMsg();
-        return false;
+        return printHelpMsg();
     }
     if (options[static_cast<int>(Option::BEST)] + options[static_cast<int>(Option::RANDOM)] +
             options[static_cast<int>(Option::WORST)] !=
         1) {
         std::cout << "specify one and only one test mode!\n";
-        printHelpMsg();
-        return false;
+        return printHelpMsg();
     }
     if (!options[static_cast<int>(Option::MERGE)] && !options[static_cast<int>(Option::INSERT)] &&
         !options[static_cast<int>(Option::BUBBLE)] && !options[static_cast<int>(Option::SELECT)]) {
         std::cout << "specify at least one sorting algorithm for test!\n";
-        printHelpMsg();
-        return false;
+        return printHelpMsg();
     }
     return true;
 }
 
-void SortTester::printHelpMsg() const {
+bool SortTester::printHelpMsg() const {
     std::cout << "Usage:\n"
               << "\ttest sort <options>\n"
               << "\n\"options\":\n"
@@ -130,6 +120,7 @@ void SortTester::printHelpMsg() const {
               << "\t-m  test merge sorting\n"
               << "\t[Note: specify at least one sorting algorithm to be tested.]\n"
               << "\n\t--size  set number of data to be sorted (default is 15)\n";
+    return false;
 }
 
 std::string SortTester::getSortingName(SortTester::Option op) {
