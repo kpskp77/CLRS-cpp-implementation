@@ -155,14 +155,14 @@ bool SortTester::Impl::printHelpMsg() {
         << "\t-B  Set test mode as best case\n"
         << "\t-R  Set test mode as random case\n"
         << "\t-W  Set test mode as worst case\n"
-        << "\t[Note: must specify one and only one test mode! default is worst case\n"
+        << "\t[Note: must specify one and only one test mode! default is worst case]\n"
         << "\n\t-P  print the data before and after sorting (default is on for size <= 20, "
            "off otherwise)\n"
         << "\n\t-i  test insert sorting\n"
         << "\t-s  test selection sorting\n"
         << "\t-b  test bubble sorting\n"
         << "\t-m  test merge sorting\n"
-        << "\t[Note: defult is all on\n"
+        << "\t[Note: defult is all on]\n"
         << "\n\t--size  set number of data to be sorted (default is 15)\n";
     return false;
 }
