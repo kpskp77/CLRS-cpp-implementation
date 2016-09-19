@@ -1,28 +1,19 @@
 #ifndef SORTTESTER_H
 #define SORTTESTER_H
 
-#include "sorting.h"
 #include "tester.h"
-
-#include <vector>
+#include <memory>
 
 class SortTester : public Tester {
   public:
     SortTester();
+    ~SortTester();
     void test() override;
     bool parseOpts(const int, const char **) override;
 
   private:
-    enum struct Option;
-    Sorting sort;
-    std::vector<bool> options;
-    int size = 15;
-
-    bool printHelpMsg() const;
-    bool validate() const;
-    void runTest(void (Sorting::*)(), Option) const;
-    static std::string getSortingName(Option);
-    void mergeOptions(unsigned);
+    struct Impl;
+    std::unique_ptr<Impl> impl_;
 };
 
 #endif

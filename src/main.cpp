@@ -1,8 +1,7 @@
 #include "argumentParser.h"
 
 int main(int argc, const char **argv) {
-    ArgumentParser parser;
-    auto tester = parser.parse(argc, argv);
+    auto tester = parse(argc, argv);
     if (tester) tester->test();
     return 0;
 }
