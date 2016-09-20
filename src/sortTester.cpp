@@ -25,7 +25,7 @@ struct SortTester::Impl {
     using option_t = uint32_t;
     constexpr static option_t printMask = 0x0001u, modeMask = 0x000eu, algorMask = 0x00f0u;
 
-    friend Option operator++(Option &op) {
+    friend Option &operator++(Option &op) {
         return op = op == Option::end_mark ? Option::print : Option(static_cast<int>(op) + 1);
     }
 
@@ -37,7 +37,6 @@ struct SortTester::Impl {
     static bool printHelpMsg();
 
     bool check(Option op) { return (options >> static_cast<int>(op)) & 0x0001u; }
-    void runModeTest(Option);
     void runAlgorTest(Option);
     bool mergeOptions(option_t);
 
@@ -66,7 +65,7 @@ void SortTester::test() {
         std::cout << "number of element: " << impl_->size << "\ttest mode: "
                   << (mode == Impl::Option::random
                           ? "random case"
-                          : ((mode == Impl::Option::best) ? "best case" : "worst case"))
+                          : (mode == Impl::Option::best ? "best case" : "worst case"))
                   << '\n';
 
         if (impl_->check(Impl::Option::print))
@@ -143,7 +142,7 @@ std::pair<void (Sorting::*)(), std::string> SortTester::Impl::getAlgor(Option al
         return std::pair<void (Sorting::*)(), std::string>(&Sorting::bubbleSorting, "bubble");
     case Option::merge:
         return std::pair<void (Sorting::*)(), std::string>(&Sorting::mergeSorting, "merge");
-    default: return std::pair<void (Sorting::*)(), std::string>();
+    default: throw 7;
     }
 }
 
