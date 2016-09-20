@@ -67,7 +67,6 @@ void SortTester::test() {
                           ? "random case"
                           : (mode == Impl::Option::best ? "best case" : "worst case"))
                   << '\n';
-
         if (impl_->check(Impl::Option::print))
             std::cout << "Original data:\n" << impl_->sort << "\n\n";
 
@@ -125,6 +124,7 @@ bool SortTester::Impl::mergeOptions(option_t op) {
         std::cout << "size must greater than 0!\n";
         return printHelpMsg();
     }
+    // if not explicitly enable some options, use default
     if (op & modeMask) options = (op | ~modeMask) & (options | modeMask);
     if (op & algorMask) options = (op | ~algorMask) & (options | algorMask);
     // if not explicitly trun on printing element and size is too big, turn off printing
