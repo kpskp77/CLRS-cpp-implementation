@@ -1,77 +1,107 @@
 #ifndef SORTING_H
 #define SORTING_H
 
-#include <iostream>
+#include <type_traits>
+#include <utility>
 #include <vector>
 
-class Test;
+// sorting algorithms
+template <class RandomIt> void insertSorting(RandomIt first, RandomIt last);
+template <class RandomIt> void selectSorting(RandomIt first, RandomIt last);
+template <class RandomIt> void bubbleSorting(RandomIt first, RandomIt last);
+template <class RandomIt> void mergeSorting(RandomIt first, RandomIt last);
 
-class Sorting {
-  public:
-    using element_type = int;
-    using data_type = std::vector<element_type>;
-    using iterator = data_type::iterator;
-    using size_type = data_type::size_type;
-    Sorting() = default;
-    Sorting(std::initializer_list<element_type> li) : data_(li) {}
+// helper
+namespace detail {
+    template <class RandomIt> void merge(RandomIt first, RandomIt middle, RandomIt last);
+    template <class RandomIt> bool isSorted(RandomIt first, RandomIt last);
+} // namespace detail
 
-    void push_back(element_type const &i) { data_.push_back(i); }
-    void push_back(element_type &&i) { data_.push_back(std::move(i)); }
-    void reserve(size_type capacity) { data_.reserve(capacity); }
-    void clear() { data_.clear(); }
-
-    void insertSorting() { insertSorting(data_.begin(), data_.end()); }
-    void selectSorting() { selectSorting(data_.begin(), data_.end()); }
-    void bubbleSorting() { bubbleSorting(data_.begin(), data_.end()); }
-    void mergeSorting() { mergeSorting(data_.begin(), data_.end()); }
-
-    friend std::ostream &operator<<(std::ostream &, Sorting const &);
-
-  private:
-    data_type data_;
-
-    // sorting algorithms
-    void insertSorting(iterator, iterator);
-    void selectSorting(iterator, iterator);
-    void bubbleSorting(iterator, iterator);
-    void mergeSorting(iterator, iterator);
-
-    // helper functions
-    void merge(iterator, iterator, iterator);
-    bool isSorted(iterator, iterator);
-};
-
-class Test {
-  public:
-    Test(int i) : i(new int(i)) {}
-    Test(Test const &t) : i(new int(*t.i)) { std::cout << "Test(Test const &)\n"; }
-    Test(Test &&t) noexcept : i(t.i) {
-        t.i = nullptr;
-        std::cout << "Test(Test &&)\n";
-    }
-    ~Test() noexcept { delete i; }
-    Test &operator=(Test const &t) {
-        *i = *t.i;
-        return *this;
-    }
-    Test &operator=(Test &&t) noexcept {
-        i = t.i;
-        t.i = nullptr;
-        return *this;
-    }
-    friend std::ostream &operator<<(std::ostream &os, Test const &t) {
-        os << *t.i;
-        return os;
-    }
-    friend bool operator>(Test const &t1, Test const &t2) { return *t1.i > *t2.i; }
-
-  private:
-    int *i;
-};
-
-inline std::ostream &operator<<(std::ostream &os, Sorting const &s) {
-    for (auto const &i : s.data_) os << i << '\t';
-    return os;
+// implementation
+template <class RandomIt> void insertSorting(RandomIt first, RandomIt last) {
+    using std::swap;
+    for (auto it = first + 1; it != last; ++it)
+        for (auto iit = it; iit != first && *(iit - 1) > *iit; --iit) swap(*(iit - 1), *iit);
 }
+
+template <class RandomIt> void selectSorting(RandomIt first, RandomIt last) {
+    using std::swap;
+    for (; first != last - 1; ++first)
+        for (auto it = first + 1; it != last; ++it)
+            if (*first > *it) swap(*first, *it);
+}
+
+template <class RandomIt> void bubbleSorting(RandomIt first, RandomIt last) {
+    using std::swap;
+    auto swapped = true;
+    while (swapped && --last != first) {
+        swapped = false;
+        for (auto it = first; it != last; ++it)
+            if (*it > *(it + 1)) {
+                swap(*it, *(it + 1));
+                swapped = true;
+            }
+    }
+}
+
+template <class RandomIt> void mergeSorting(RandomIt first, RandomIt last) {
+    /* normal merge sorting implementation
+    using std::swap;
+    if (!detail::isSorted(first, last)) {
+        if (last - first == 2) {
+            swap(*first, *--last);
+        } else {
+            auto middle = first + (last - first) / 2;
+            mergeSorting(first, middle);
+            mergeSorting(middle, last);
+            merge(first, middle, last);
+        }
+    }
+    //--------------------------------------------------*/
+
+    //* optimaze using insert sorting for small lenght
+    if (last - first <= 40) {
+        insertSorting(first, last);
+    } else {
+        auto middle = first + (last - first) / 2;
+        mergeSorting(first, middle);
+        mergeSorting(middle, last);
+        detail::merge(first, middle, last);
+    }
+    //--------------------------------------------------*/
+}
+
+namespace detail {
+    template <class RandomIt> void merge(RandomIt first, RandomIt middle, RandomIt last) {
+        std::vector<std::decay_t<decltype(*first)>> d;
+        d.reserve(last - first);
+        auto top1 = first, top2 = middle;
+        while (true) {
+            if (top1 == middle) {
+                break;
+            } else if (top2 == last) {
+                std::move_backward(top1, middle, last);
+                break;
+            } else if (*top1 > *top2) {
+                d.push_back(std::move(*top2));
+                ++top2;
+            } else {
+                d.push_back(std::move(*top1));
+                ++top1;
+            }
+        }
+        std::move(d.begin(), d.end(), first);
+    }
+    template <class RandomIt> bool isSorted(RandomIt first, RandomIt last) {
+        auto sorted = true;
+        while (++first != last) { // has more than one element
+            if (*(first - 1) > *first) {
+                sorted = false;
+                break;
+            }
+        }
+        return sorted;
+    }
+} // namespace detail
 
 #endif
