@@ -8,7 +8,9 @@ namespace detail {
     template <class RandomIt> void merge(RandomIt first, RandomIt middle, RandomIt last);
 } // namespace detail
 
-// implementation
+/* Insertion sort
+ * best: O(n); average: O(n^2); worst: O(n^2)
+ */
 template <class RandomIt> void insertSorting(RandomIt first, RandomIt last) {
     insertSorting(first, last, detail::less);
 }
@@ -21,6 +23,9 @@ void insertSorting(RandomIt first, RandomIt last, Compare comp) {
             swap(*(iit - 1), *iit);
 }
 
+/* Selection sort
+ * best: O(n^2); average: O(n^2); worst: O(n^2)
+ */
 template <class RandomIt> void selectSorting(RandomIt first, RandomIt last) {
     selectSorting(first, last, detail::less);
 }
@@ -33,6 +38,9 @@ void selectSorting(RandomIt first, RandomIt last, Compare comp) {
             if (comp(*it, *first)) swap(*first, *it);
 }
 
+/* Bubble sort
+ * best: O(n); average: O(n^2); worst: O(n^2)
+ */
 template <class RandomIt> void bubbleSorting(RandomIt first, RandomIt last) {
     bubbleSorting(first, last, detail::less);
 }
@@ -51,6 +59,9 @@ void bubbleSorting(RandomIt first, RandomIt last, Compare comp) {
     }
 }
 
+/* Merge sort
+ * best: O(nlgn); average: O(nlgn); worst: O(nlgn)
+ */
 template <class RandomIt> void mergeSorting(RandomIt first, RandomIt last) {
     mergeSorting(first, last, detail::less);
 }

@@ -8,8 +8,8 @@ class SortTester : public Tester {
   public:
     SortTester();
     ~SortTester();
-    void test() override;
-    bool parseOpts(const int, const char **) override;
+    void test() const override;
+    bool parseOpts(const int, const char **) const override;
 
   private:
     struct Impl;

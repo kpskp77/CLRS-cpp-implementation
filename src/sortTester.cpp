@@ -30,11 +30,11 @@ namespace /* unnamed */ {
 
     constexpr option_t printMask = 0x0001u, modeMask = 0x000eu, algorMask = 0x00f0u;
 
-    Option &operator++(Option &op) {
+    inline Option &operator++(Option &op) {
         return op = op == Option::end_mark ? Option::print : Option(static_cast<int>(op) + 1);
     }
-    bool printHelpMsg();
-    std::ostream &operator<<(std::ostream &, data_type const &);
+    inline bool printHelpMsg();
+    inline std::ostream &operator<<(std::ostream &, data_type const &);
 } // namespace  /* unnamed */
 
 struct SortTester::Impl {
@@ -42,8 +42,8 @@ struct SortTester::Impl {
     // enable all sort algorithms, number of data is 15
     Impl(option_t opts = 0x00f9u, int size = 15) : options(opts), size(size) {}
 
-    bool check(Option op) { return (options >> static_cast<int>(op)) & 0x0001u; }
-    void runAlgorTest(Option);
+    bool check(Option op) const { return (options >> static_cast<int>(op)) & 0x0001u; }
+    void runAlgorTest(Option) const;
     bool mergeOptions(option_t);
 
     data_type data_;
@@ -55,7 +55,7 @@ SortTester::SortTester() : impl_(std::make_unique<Impl>()) {}
 
 SortTester::~SortTester() {}
 
-void SortTester::test() {
+void SortTester::test() const {
     std::mt19937 randgen;
     randgen.seed(1);
     impl_->data_.reserve(impl_->size);
@@ -81,7 +81,7 @@ void SortTester::test() {
     }
 }
 
-void SortTester::Impl::runAlgorTest(Option algor) {
+void SortTester::Impl::runAlgorTest(Option algor) const {
     using timer = std::chrono::high_resolution_clock;
     auto data = data_;
     std::string algorName;
@@ -111,7 +111,7 @@ void SortTester::Impl::runAlgorTest(Option algor) {
     if (check(Option::print)) std::cout << "Sorted data:\n" << data << "\n\n";
 }
 
-bool SortTester::parseOpts(const int argc, const char **argv) {
+bool SortTester::parseOpts(const int argc, const char **argv) const {
     std::stack<std::string> args;
     option_t op = 0u;
     for (auto i = argc - 1; i >= 0; --i) args.push(argv[i]);
@@ -204,7 +204,7 @@ namespace /* unnamed */ {
             os << *t.i;
             return os;
         }
-        friend bool operator>(Test const &t1, Test const &t2) { return *t1.i > *t2.i; }
+        friend bool operator<(Test const &t1, Test const &t2) { return *t1.i < *t2.i; }
 
       private:
         int *i;
