@@ -164,7 +164,7 @@ namespace /* unnamed */ {
             << "\t-B  Set test mode as best case\n"
             << "\t-R  Set test mode as random case\n"
             << "\t-W  Set test mode as worst case\n"
-            << "\t[Note: must specify one and only one test mode! default is worst case]\n"
+            << "\t[Note: must specify at least one test mode! default is worst case]\n"
             << "\n\t-P  print the data before and after sorting (default is on for size <= "
                "20, off otherwise)\n"
             << "\n\t-i  test insert sorting\n"
