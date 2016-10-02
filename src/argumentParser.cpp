@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "argumentParser.h"
+#include "kmpTester.h"
 #include "sortTester.h"
 
 static void printHelpMsg();
@@ -10,6 +11,7 @@ std::unique_ptr<Tester> parse(int argc, const char **argv) {
     if (argc > 1) {
         std::string s(argv[1]);
         if (s == "sort") return parse<SortTester>(argc - 2, argv + 2);
+        if (s == "kmp") return parse<KmpTester>(argc - 2, argv + 2);
     }
     printHelpMsg();
     return nullptr;
@@ -20,6 +22,7 @@ void printHelpMsg() {
               << "\ttest [category] <options>\n"
               << "\n\"category\"is one of:\n"
               << "\tsort - sort algorithms\n"
+              << "\tkmp - Knuth-Morris-Pratt algorithm\n"
               << "\n\"options\":\n"
               << "depends on category. use\n"
               << "\ttest [category] -h\n"

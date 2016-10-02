@@ -1,7 +1,7 @@
 #ifndef KMP_H
 #define KMP_H
 
-/* Knuth–Morris–Pratt algorithm
+/* Knuth-Morris-Pratt algorithm
  * need random access iterator
  * the type iterator refers to should have operator==
  */

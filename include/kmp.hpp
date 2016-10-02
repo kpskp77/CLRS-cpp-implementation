@@ -48,6 +48,8 @@ namespace detail {
     }
 
     template <class RandomIt> std::vector<int> getNext(RandomIt first, RandomIt last) {
+        // next array is one longer than pattern in order to jump to the right place when
+        // pattern goes to end
         std::vector<int> next(last - first + 1, 0);
         next[0] = -1;
         auto i = 0, j = -1;
