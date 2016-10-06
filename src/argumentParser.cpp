@@ -25,7 +25,7 @@ void printHelpMsg() {
               << "\tkmp - Knuth-Morris-Pratt algorithm\n"
               << "\n\"options\":\n"
               << "depends on category. use\n"
-              << "\ttest [category] -h\n"
+              << "\ttest [category] --help\n"
               << "for details\n";
 }
 
