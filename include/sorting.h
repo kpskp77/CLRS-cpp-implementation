@@ -30,6 +30,12 @@ template <class RandomIt> void mergeSorting(RandomIt first, RandomIt last);
 template <class RandomIt, class Compare>
 void mergeSorting(RandomIt first, RandomIt last, Compare comp);
 
+// heap sort
+template <class RandomIt> void heapSorting(RandomIt first, RandomIt last);
+
+template <class RandomIt, class Compare>
+void heapSorting(RandomIt first, RandomIt last, Compare comp);
+
 #include "sorting.hpp"
 
 #endif

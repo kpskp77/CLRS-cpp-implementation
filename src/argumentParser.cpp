@@ -3,9 +3,12 @@
 #include "argumentParser.h"
 #include "kmpTester.h"
 #include "sortTester.h"
+#include "tester.h"
 
-static void printHelpMsg();
-template <class T> static std::unique_ptr<Tester> parse(int, const char **);
+namespace /* unnamed */ {
+    void printHelpMsg();
+    template <class T> std::unique_ptr<Tester> parse(int, const char **);
+} // namespace  /* unnamed */
 
 std::unique_ptr<Tester> parse(int argc, const char **argv) {
     if (argc > 1) {
@@ -17,19 +20,21 @@ std::unique_ptr<Tester> parse(int argc, const char **argv) {
     return nullptr;
 }
 
-void printHelpMsg() {
-    std::cout << "Usage:\n"
-              << "\ttest [category] <options>\n"
-              << "\n\"category\"is one of:\n"
-              << "\tsort - sort algorithms\n"
-              << "\tkmp - Knuth-Morris-Pratt algorithm\n"
-              << "\n\"options\":\n"
-              << "depends on category. use\n"
-              << "\ttest [category] -h\n"
-              << "for details\n";
-}
+namespace /* unnamed */ {
+    void printHelpMsg() {
+        std::cout << "Usage:\n"
+                  << "\ttest [category] <options>\n"
+                  << "\n\"category\"is one of:\n"
+                  << "\tsort - sort algorithms\n"
+                  << "\tkmp - Knuth-Morris-Pratt algorithm\n"
+                  << "\n\"options\":\n"
+                  << "depends on category. use\n"
+                  << "\ttest [category] --help\n"
+                  << "for details\n";
+    }
 
-template <class T> std::unique_ptr<Tester> parse(int argc, const char **argv) {
-    std::unique_ptr<Tester> tester = std::make_unique<T>();
-    return tester->parseOpts(argc, argv) ? std::move(tester) : nullptr;
-}
+    template <class T> std::unique_ptr<Tester> parse(int argc, const char **argv) {
+        std::unique_ptr<Tester> tester = std::make_unique<T>();
+        return tester->parseOpts(argc, argv) ? std::move(tester) : nullptr;
+    }
+} // namespace  /* unnamed */

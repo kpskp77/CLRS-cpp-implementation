@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include "tester.h"
+class Tester;
 
 std::unique_ptr<Tester> parse(int, const char **);
 

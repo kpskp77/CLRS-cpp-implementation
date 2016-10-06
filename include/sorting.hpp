@@ -5,7 +5,6 @@
 // helper
 namespace detail {
     auto less = [](auto const &lhs, auto const &rhs) { return lhs < rhs; };
-    template <class RandomIt> void merge(RandomIt first, RandomIt middle, RandomIt last);
 } // namespace detail
 
 /* Insertion sort
@@ -62,24 +61,6 @@ void bubbleSorting(RandomIt first, RandomIt last, Compare comp) {
 /* Merge sort
  * best: O(nlgn); average: O(nlgn); worst: O(nlgn)
  */
-template <class RandomIt> void mergeSorting(RandomIt first, RandomIt last) {
-    mergeSorting(first, last, detail::less);
-}
-
-template <class RandomIt, class Compare>
-void mergeSorting(RandomIt first, RandomIt last, Compare comp) {
-    using std::swap;
-    if (last - first < 2) return;
-    if (last - first == 2) {
-        if (comp(*--last, *first)) swap(*first, *last);
-    } else {
-        auto middle = first + (last - first) / 2;
-        mergeSorting(first, middle);
-        mergeSorting(middle, last);
-        detail::merge(first, middle, last);
-    }
-}
-
 namespace detail {
     template <class RandomIt> void merge(RandomIt first, RandomIt middle, RandomIt last) {
         std::vector<std::decay_t<decltype(*first)>> d;
@@ -102,3 +83,61 @@ namespace detail {
         std::move(d.begin(), d.end(), first);
     }
 } // namespace detail
+
+template <class RandomIt> void mergeSorting(RandomIt first, RandomIt last) {
+    mergeSorting(first, last, detail::less);
+}
+
+template <class RandomIt, class Compare>
+void mergeSorting(RandomIt first, RandomIt last, Compare comp) {
+    using std::swap;
+    if (last - first < 2) return;
+    if (last - first == 2) {
+        if (comp(*--last, *first)) swap(*first, *last);
+    } else {
+        auto middle = first + (last - first) / 2;
+        mergeSorting(first, middle);
+        mergeSorting(middle, last);
+        detail::merge(first, middle, last);
+    }
+}
+
+/* Heap sort
+ * best: O(nlgn); average: O(nlgn); worst: O(nlgn)
+ */
+namespace detail {
+    template <class RandomIt, class Index, class Compare>
+    void maxHeapify(RandomIt first, RandomIt last, Index i, Compare comp) {
+        using std::swap;
+        auto left = 2 * i;
+        if (left > last - first) return;
+        auto right = 2 * i + 1;
+        auto largest = i;
+        if (comp(first[largest - 1], first[left - 1])) largest = left;
+        if (right <= last - first && comp(first[largest - 1], first[right - 1]))
+            largest = right;
+        if (largest != i) {
+            swap(first[i - 1], first[largest - 1]);
+            maxHeapify(first, last, largest, comp);
+        }
+    }
+
+    template <class RandomIt, class Compare>
+    void buildMaxHeap(RandomIt first, RandomIt last, Compare comp) {
+        for (auto i = (last - first) / 2; i > 0; --i) maxHeapify(first, last, i, comp);
+    }
+} // namespace detail
+
+template <class RandomIt> void heapSorting(RandomIt first, RandomIt last) {
+    heapSorting(first, last, detail::less);
+}
+
+template <class RandomIt, class Compare>
+void heapSorting(RandomIt first, RandomIt last, Compare comp) {
+    using std::swap;
+    detail::buildMaxHeap(first, last, comp);
+    while (last - first > 1) {
+        swap(*first, *--last);
+        detail::maxHeapify(first, last, 1, comp);
+    }
+}
