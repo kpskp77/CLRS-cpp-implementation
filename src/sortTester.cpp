@@ -94,30 +94,30 @@ void SortTester::Impl::runAlgorTest(Option algor) const {
     auto start = timer::now();
     switch (algor) {
     case Option::insert:
-        insertSorting(data.begin(), data.end());
+        insertSort(data.begin(), data.end());
         algorName = "insert";
         break;
     case Option::select:
-        selectSorting(data.begin(), data.end());
+        selectSort(data.begin(), data.end());
         algorName = "select";
         break;
     case Option::bubble:
-        bubbleSorting(data.begin(), data.end());
+        bubbleSort(data.begin(), data.end());
         algorName = "bubble";
         break;
     case Option::merge:
-        mergeSorting(data.begin(), data.end());
+        mergeSort(data.begin(), data.end());
         algorName = "merge";
         break;
     case Option::heap:
-        heapSorting(data.begin(), data.end());
+        heapSort(data.begin(), data.end());
         algorName = "heap";
         break;
     default: throw 7;
     }
     diff = timer::now() - start;
-    std::cout << "time for " << algorName << " sorting: " << std::setprecision(10)
-              << diff.count() << " seconds\n";
+    std::cout << "time for " << algorName << " sort: " << std::setprecision(10) << diff.count()
+              << " seconds\n";
     if (check(Option::print)) std::cout << "Sorted data:\n" << data << "\n\n";
 }
 
@@ -178,11 +178,11 @@ namespace /* unnamed */ {
             << "\t[Note: must specify at least one test mode! default is worst case]\n"
             << "\n\t-P  print the data before and after sorting (default is on for size <= "
                "20, off otherwise)\n"
-            << "\n\t-i  test insert sorting\n"
-            << "\t-s  test selection sorting\n"
-            << "\t-b  test bubble sorting\n"
-            << "\t-m  test merge sorting\n"
-            << "\t-h  test heap sorting\n"
+            << "\n\t-i  test insert sort\n"
+            << "\t-s  test selection sort\n"
+            << "\t-b  test bubble sort\n"
+            << "\t-m  test merge sort\n"
+            << "\t-h  test heap sort\n"
             << "\t[Note: defult is all on]\n"
             << "\n\t--size  set number of data to be sorted (default is 15)\n";
         return false;

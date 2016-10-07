@@ -10,12 +10,12 @@ namespace detail {
 /* Insertion sort
  * best: O(n); average: O(n^2); worst: O(n^2)
  */
-template <class RandomIt> void insertSorting(RandomIt first, RandomIt last) {
-    insertSorting(first, last, detail::less);
+template <class RandomIt> void insertSort(RandomIt first, RandomIt last) {
+    insertSort(first, last, detail::less);
 }
 
 template <class RandomIt, class Compare>
-void insertSorting(RandomIt first, RandomIt last, Compare comp) {
+void insertSort(RandomIt first, RandomIt last, Compare comp) {
     using std::swap;
     for (auto it = first + 1; it != last; ++it)
         for (auto iit = it; iit != first && comp(*iit, *(iit - 1)); --iit)
@@ -25,12 +25,12 @@ void insertSorting(RandomIt first, RandomIt last, Compare comp) {
 /* Selection sort
  * best: O(n^2); average: O(n^2); worst: O(n^2)
  */
-template <class RandomIt> void selectSorting(RandomIt first, RandomIt last) {
-    selectSorting(first, last, detail::less);
+template <class RandomIt> void selectSort(RandomIt first, RandomIt last) {
+    selectSort(first, last, detail::less);
 }
 
 template <class RandomIt, class Compare>
-void selectSorting(RandomIt first, RandomIt last, Compare comp) {
+void selectSort(RandomIt first, RandomIt last, Compare comp) {
     using std::swap;
     for (; first != last - 1; ++first)
         for (auto it = first + 1; it != last; ++it)
@@ -40,12 +40,12 @@ void selectSorting(RandomIt first, RandomIt last, Compare comp) {
 /* Bubble sort
  * best: O(n); average: O(n^2); worst: O(n^2)
  */
-template <class RandomIt> void bubbleSorting(RandomIt first, RandomIt last) {
-    bubbleSorting(first, last, detail::less);
+template <class RandomIt> void bubbleSort(RandomIt first, RandomIt last) {
+    bubbleSort(first, last, detail::less);
 }
 
 template <class RandomIt, class Compare>
-void bubbleSorting(RandomIt first, RandomIt last, Compare comp) {
+void bubbleSort(RandomIt first, RandomIt last, Compare comp) {
     using std::swap;
     auto swapped = true;
     while (swapped && --last != first) {
@@ -82,20 +82,20 @@ namespace detail {
     }
 } // namespace detail
 
-template <class RandomIt> void mergeSorting(RandomIt first, RandomIt last) {
-    mergeSorting(first, last, detail::less);
+template <class RandomIt> void mergeSort(RandomIt first, RandomIt last) {
+    mergeSort(first, last, detail::less);
 }
 
 template <class RandomIt, class Compare>
-void mergeSorting(RandomIt first, RandomIt last, Compare comp) {
+void mergeSort(RandomIt first, RandomIt last, Compare comp) {
     using std::swap;
     if (last - first < 2) return;
     if (last - first == 2) {
         if (comp(*--last, *first)) swap(*first, *last);
     } else {
         auto middle = first + (last - first) / 2;
-        mergeSorting(first, middle, comp);
-        mergeSorting(middle, last, comp);
+        mergeSort(first, middle, comp);
+        mergeSort(middle, last, comp);
         detail::merge(first, middle, last, comp);
     }
 }
@@ -142,12 +142,12 @@ namespace detail {
     }
 } // namespace detail
 
-template <class RandomIt> void heapSorting(RandomIt first, RandomIt last) {
-    heapSorting(first, last, detail::less);
+template <class RandomIt> void heapSort(RandomIt first, RandomIt last) {
+    heapSort(first, last, detail::less);
 }
 
 template <class RandomIt, class Compare>
-void heapSorting(RandomIt first, RandomIt last, Compare comp) {
+void heapSort(RandomIt first, RandomIt last, Compare comp) {
     using std::swap;
     detail::buildMaxHeap(first, last, comp);
     while (last - first > 1) {
