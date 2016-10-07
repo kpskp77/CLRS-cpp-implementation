@@ -67,17 +67,14 @@ namespace detail {
         std::vector<std::decay_t<decltype(*first)>> d;
         d.reserve(last - first);
         auto top1 = first, top2 = middle;
-        while (true) {
-            if (top1 == middle) break;
-            if (top2 == last) {
-                std::move_backward(top1, middle, last);
-                break;
-            }
+        while (top1 != middle && top2 != last) {
             if (comp(*top2, *top1))
                 d.push_back(std::move(*top2++));
             else
                 d.push_back(std::move(*top1++));
         }
+        // move [top1, middle) to [last - (middle - top1), last) if top2 reaches end
+        if (top2 == last) std::move_backward(top1, middle, last);
         std::move(d.begin(), d.end(), first);
     }
 } // namespace detail
@@ -104,34 +101,34 @@ void mergeSort(RandomIt first, RandomIt last, Compare comp) {
  * best: O(nlgn); average: O(nlgn); worst: O(nlgn)
  */
 namespace detail {
-    template <class RandomIt, class Index, class Compare>
-    void maxHeapify(RandomIt first, RandomIt last, Index i, Compare comp) {
+    template <class RandomIt, class Compare>
+    void maxHeapify(RandomIt first, RandomIt last, int index, Compare comp) {
         using std::swap;
         /* recursion version
-        if (left > (last - first) / 2) return;
-        auto left = 2 * i;
-        auto right = 2 * i + 1;
-        auto largest = i;
+        if (index > (last - first) / 2) return;
+        auto left = 2 * index;
+        auto right = 2 * index + 1;
+        auto largest = index;
         if (comp(first[largest - 1], first[left - 1])) largest = left;
         if (right <= last - first && comp(first[largest - 1], first[right - 1]))
             largest = right;
-        if (largest != i) {
-            swap(first[i - 1], first[largest - 1]);
+        if (largest != index) {
+            swap(first[index - 1], first[largest - 1]);
             maxHeapify(first, last, largest, comp);
         }
         // end recursion version */
         //* iteration version
-        Index left, right, largest;
-        while (i <= (last - first) / 2) {
-            left = 2 * i;
-            right = 2 * i + 1;
-            largest = i;
+        decltype(index) left, right, largest;
+        while (index <= (last - first) / 2) {
+            left = 2 * index;
+            right = 2 * index + 1;
+            largest = index;
             if (comp(first[largest - 1], first[left - 1])) largest = left;
             if (right <= last - first && comp(first[largest - 1], first[right - 1]))
                 largest = right;
-            if (largest == i) break;
-            swap(first[i - 1], first[largest - 1]);
-            i = largest;
+            if (largest == index) break;
+            swap(first[index - 1], first[largest - 1]);
+            index = largest;
         }
         // end iteration version */
     }

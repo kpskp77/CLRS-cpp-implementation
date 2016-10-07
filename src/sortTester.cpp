@@ -15,9 +15,11 @@ namespace /* unnamed */ {
     class Test;
     enum class Option {
         print = 0,
+        // options for test mode
         best,
         random,
         worst,
+        // options for sort algorithm
         insert,
         select,
         bubble,
@@ -31,6 +33,8 @@ namespace /* unnamed */ {
     using data_type = std::vector<element_type>;
 
     constexpr option_t printMask = 0x0001u, modeMask = 0x000eu, algorMask = 0x01f0u;
+    constexpr auto modeBegin = Option::best, modeEnd = Option::insert,
+                   algorBegin = Option::insert, algorEnd = Option::end_mark;
 
     inline Option &operator++(Option &op) {
         return op = op == Option::end_mark ? Option::print : Option(static_cast<int>(op) + 1);
@@ -48,7 +52,7 @@ struct SortTester::Impl {
     void runAlgorTest(Option) const;
     bool mergeOptions(option_t);
 
-    data_type data_;
+    data_type data;
     option_t options;
     int size;
 };
@@ -60,18 +64,18 @@ SortTester::~SortTester() {}
 void SortTester::test() const {
     using namespace std::chrono;
     std::mt19937 randgen;
-    auto sysTime =
+    auto sysTime_ms =
         time_point_cast<milliseconds>(system_clock::now()).time_since_epoch().count();
-    randgen.seed(sysTime);
-    impl_->data_.reserve(impl_->size);
-    for (auto mode = Option::best; mode != Option::insert; ++mode) {
+    randgen.seed(sysTime_ms);
+    impl_->data.reserve(impl_->size);
+    for (auto mode = modeBegin; mode != modeEnd; ++mode) {
         if (!impl_->check(mode)) continue;
         std::cout << "======================================================\n";
-        impl_->data_.clear();
+        impl_->data.clear();
         for (auto i = impl_->size; i > 0; --i) {
-            if (mode == Option::random) impl_->data_.push_back(randgen());
-            if (mode == Option::best) impl_->data_.push_back(impl_->size - i + 1);
-            if (mode == Option::worst) impl_->data_.push_back(i);
+            if (mode == Option::random) impl_->data.push_back(randgen());
+            if (mode == Option::best) impl_->data.push_back(impl_->size - i + 1);
+            if (mode == Option::worst) impl_->data.push_back(i);
         }
         std::cout << "number of element: " << impl_->size << "\ttest mode: "
                   << (mode == Option::random
@@ -79,38 +83,38 @@ void SortTester::test() const {
                           : (mode == Option::best ? "best case" : "worst case"))
                   << '\n';
         if (impl_->check(Option::print))
-            std::cout << "Original data:\n" << impl_->data_ << "\n\n";
+            std::cout << "Original data:\n" << impl_->data << "\n\n";
 
-        for (auto algor = Option::insert; algor != Option::end_mark; ++algor)
+        for (auto algor = algorBegin; algor != algorEnd; ++algor)
             if (impl_->check(algor)) impl_->runAlgorTest(algor);
     }
 }
 
 void SortTester::Impl::runAlgorTest(Option algor) const {
     using timer = std::chrono::high_resolution_clock;
-    auto data = data_;
+    auto data_cp = data;
     std::string algorName;
     std::chrono::duration<long double> diff;
     auto start = timer::now();
     switch (algor) {
     case Option::insert:
-        insertSort(data.begin(), data.end());
+        insertSort(data_cp.begin(), data_cp.end());
         algorName = "insert";
         break;
     case Option::select:
-        selectSort(data.begin(), data.end());
+        selectSort(data_cp.begin(), data_cp.end());
         algorName = "select";
         break;
     case Option::bubble:
-        bubbleSort(data.begin(), data.end());
+        bubbleSort(data_cp.begin(), data_cp.end());
         algorName = "bubble";
         break;
     case Option::merge:
-        mergeSort(data.begin(), data.end());
+        mergeSort(data_cp.begin(), data_cp.end());
         algorName = "merge";
         break;
     case Option::heap:
-        heapSort(data.begin(), data.end());
+        heapSort(data_cp.begin(), data_cp.end());
         algorName = "heap";
         break;
     default: throw 7;
@@ -118,7 +122,7 @@ void SortTester::Impl::runAlgorTest(Option algor) const {
     diff = timer::now() - start;
     std::cout << "time for " << algorName << " sort: " << std::setprecision(10) << diff.count()
               << " seconds\n";
-    if (check(Option::print)) std::cout << "Sorted data:\n" << data << "\n\n";
+    if (check(Option::print)) std::cout << "Sorted data:\n" << data_cp << "\n\n";
 }
 
 bool SortTester::parseOpts(const int argc, const char **argv) const {

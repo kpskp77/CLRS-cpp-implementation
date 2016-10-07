@@ -28,7 +28,7 @@ namespace detail {
     template <class RandomIt>
     std::size_t KMP_impl(RandomIt mainFirst, RandomIt mainLast, RandomIt patternFirst,
                          RandomIt patternLast, std::size_t times) {
-        std::size_t counts = 0;
+        auto counts = decltype(times){0};
         auto next = getNext(patternFirst, patternLast);
         auto i = 0, j = 0;
         while (i < mainLast - mainFirst) {
@@ -44,7 +44,7 @@ namespace detail {
             }
         }
         // return index of mainLast if no match or times of match less than required
-        return times == 0 ? counts : static_cast<std::size_t>(i);
+        return times == 0 ? counts : static_cast<decltype(counts)>(i);
     }
 
     template <class RandomIt> std::vector<int> getNext(RandomIt first, RandomIt last) {

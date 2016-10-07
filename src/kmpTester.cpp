@@ -44,7 +44,7 @@ void KmpTester::test() const {
     for (decltype(count) i = 1; i <= count; ++i)
         std::cout << KMP(impl_->main_.cbegin(), impl_->main_.cend(), impl_->pattern_.cbegin(),
                          impl_->pattern_.cend(), i) -
-                         impl_->main_.cbegin()
+                         impl_->main_.cbegin() + 1
                   << ' ';
 }
 
