@@ -44,9 +44,9 @@ namespace /* unnamed */ {
 } // namespace  /* unnamed */
 
 struct SortTester::Impl {
-    // default: enalbe Option::print, test in Option::worst case,
+    // default: enalbe Option::print, test in Option::descending case,
     // enable all sort algorithms, number of data is 15
-    Impl(option_t opts = algorMask | 0x0009u, int size = 15) : options(opts), size(size) {}
+    Impl(option_t opts = algorMask | 0x0005u, int size = 15) : options(opts), size(size) {}
 
     bool check(Option op) const { return (options >> static_cast<int>(op)) & 0x0001u; }
     void runAlgorTest(Option) const;
@@ -179,7 +179,7 @@ namespace /* unnamed */ {
             << "\t-A  Set original data ascendingly sorted\n"
             << "\t-R  Set original data randomly sorted\n"
             << "\t-D  Set original data descendingly sorted\n"
-            << "\t[Note: must specify at least one test mode! default is worst case]\n"
+            << "\t[Note: default is descendingly sorted]\n"
             << "\n\t-P  print the data before and after sorting (default is on for size <= "
                "20, off otherwise)\n"
             << "\n\t-i  test insert sort\n"
