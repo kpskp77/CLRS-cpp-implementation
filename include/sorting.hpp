@@ -110,8 +110,8 @@ namespace detail {
     void maxHeapify(RandomIt first, RandomIt last, Index i, Compare comp) {
         using std::swap;
         /* recursion version
+        if (left > (last - first) / 2) return;
         auto left = 2 * i;
-        if (left > last - first) return;
         auto right = 2 * i + 1;
         auto largest = i;
         if (comp(first[largest - 1], first[left - 1])) largest = left;
@@ -124,9 +124,8 @@ namespace detail {
         // end recursion version */
         //* iteration version
         Index left, right, largest;
-        while (i <= last - first) {
+        while (i <= (last - first) / 2) {
             left = 2 * i;
-            if (left > last - first) break;
             right = 2 * i + 1;
             largest = i;
             if (comp(first[largest - 1], first[left - 1])) largest = left;
