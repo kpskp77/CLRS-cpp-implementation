@@ -10,7 +10,7 @@ EXE := $(BIN_PATH)/test.exe
 
 CXX = clang++
 CPPFLAGS = -I./include -std=c++14
-CXXFLAGS = -c -Wall -fno-elide-constructors -pedantic
+CXXFLAGS = -c -Wall -O3 -pedantic
 
 .PHONY: all clean
 

@@ -96,8 +96,8 @@ void mergeSorting(RandomIt first, RandomIt last, Compare comp) {
         if (comp(*--last, *first)) swap(*first, *last);
     } else {
         auto middle = first + (last - first) / 2;
-        mergeSorting(first, middle);
-        mergeSorting(middle, last);
+        mergeSorting(first, middle, comp);
+        mergeSorting(middle, last, comp);
         detail::merge(first, middle, last);
     }
 }
@@ -109,6 +109,7 @@ namespace detail {
     template <class RandomIt, class Index, class Compare>
     void maxHeapify(RandomIt first, RandomIt last, Index i, Compare comp) {
         using std::swap;
+        /* recursion version
         auto left = 2 * i;
         if (left > last - first) return;
         auto right = 2 * i + 1;
@@ -120,6 +121,22 @@ namespace detail {
             swap(first[i - 1], first[largest - 1]);
             maxHeapify(first, last, largest, comp);
         }
+        // end recursion version */
+        //* iteration version
+        Index left, right, largest;
+        while (i <= last - first) {
+            left = 2 * i;
+            if (left > last - first) break;
+            right = 2 * i + 1;
+            largest = i;
+            if (comp(first[largest - 1], first[left - 1])) largest = left;
+            if (right <= last - first && comp(first[largest - 1], first[right - 1]))
+                largest = right;
+            if (largest == i) break;
+            swap(first[i - 1], first[largest - 1]);
+            i = largest;
+        }
+        // end iteration version */
     }
 
     template <class RandomIt, class Compare>
