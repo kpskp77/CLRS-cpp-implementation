@@ -3,7 +3,7 @@
 
 /* all the sorting algorithm needs random access iterators, and
  * the type the iterator references to should be swappable,
- * use operator < to compare elements by default
+ * use operator< to compare elements by default
  */
 
 // insert sort
@@ -36,6 +36,6 @@ template <class RandomIt> void heapSorting(RandomIt first, RandomIt last);
 template <class RandomIt, class Compare>
 void heapSorting(RandomIt first, RandomIt last, Compare comp);
 
-#include "sorting.hpp"
+#include "sort.hpp"
 
 #endif

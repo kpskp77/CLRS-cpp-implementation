@@ -62,23 +62,21 @@ void bubbleSorting(RandomIt first, RandomIt last, Compare comp) {
  * best: O(nlgn); average: O(nlgn); worst: O(nlgn)
  */
 namespace detail {
-    template <class RandomIt> void merge(RandomIt first, RandomIt middle, RandomIt last) {
+    template <class RandomIt, class Compare>
+    void merge(RandomIt first, RandomIt middle, RandomIt last, Compare comp) {
         std::vector<std::decay_t<decltype(*first)>> d;
         d.reserve(last - first);
         auto top1 = first, top2 = middle;
         while (true) {
-            if (top1 == middle) {
-                break;
-            } else if (top2 == last) {
+            if (top1 == middle) break;
+            if (top2 == last) {
                 std::move_backward(top1, middle, last);
                 break;
-            } else if (*top2 < *top1) {
-                d.push_back(std::move(*top2));
-                ++top2;
-            } else {
-                d.push_back(std::move(*top1));
-                ++top1;
             }
+            if (comp(*top2, *top1))
+                d.push_back(std::move(*top2++));
+            else
+                d.push_back(std::move(*top1++));
         }
         std::move(d.begin(), d.end(), first);
     }
@@ -98,7 +96,7 @@ void mergeSorting(RandomIt first, RandomIt last, Compare comp) {
         auto middle = first + (last - first) / 2;
         mergeSorting(first, middle, comp);
         mergeSorting(middle, last, comp);
-        detail::merge(first, middle, last);
+        detail::merge(first, middle, last, comp);
     }
 }
 

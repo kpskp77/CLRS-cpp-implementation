@@ -8,8 +8,8 @@
 #include <utility>
 #include <vector>
 
+#include "sort.h"
 #include "sortTester.h"
-#include "sorting.h"
 
 namespace /* unnamed */ {
     class Test;

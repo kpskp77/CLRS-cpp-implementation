@@ -43,5 +43,8 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 %.h:;
 #	prevent make from stopping when a header file is renamed, moved or deleted
 
+%.hpp:;
+#	prevent make from stopping when a header file is renamed, moved or deleted
+
 clean:
 	rm -f $(OBJ_PATH)/*.o $(DFILE_PATH)/*.d*
