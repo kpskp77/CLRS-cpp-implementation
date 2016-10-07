@@ -15,10 +15,10 @@ namespace /* unnamed */ {
     class Test;
     enum class Option {
         print = 0,
-        // options for test mode
-        best,
+        // options for original data
+        ascending,
+        descending,
         random,
-        worst,
         // options for sort algorithm
         insert,
         select,
@@ -33,7 +33,7 @@ namespace /* unnamed */ {
     using data_type = std::vector<element_type>;
 
     constexpr option_t printMask = 0x0001u, modeMask = 0x000eu, algorMask = 0x01f0u;
-    constexpr auto modeBegin = Option::best, modeEnd = Option::insert,
+    constexpr auto modeBegin = Option::ascending, modeEnd = Option::insert,
                    algorBegin = Option::insert, algorEnd = Option::end_mark;
 
     inline Option &operator++(Option &op) {
@@ -74,14 +74,14 @@ void SortTester::test() const {
         impl_->data.clear();
         for (auto i = impl_->size; i > 0; --i) {
             if (mode == Option::random) impl_->data.push_back(randgen());
-            if (mode == Option::best) impl_->data.push_back(impl_->size - i + 1);
-            if (mode == Option::worst) impl_->data.push_back(i);
+            if (mode == Option::ascending) impl_->data.push_back(impl_->size - i + 1);
+            if (mode == Option::descending) impl_->data.push_back(i);
         }
-        std::cout << "number of element: " << impl_->size << "\ttest mode: "
+        std::cout << "number of element: " << impl_->size << "\toriginal data: "
                   << (mode == Option::random
-                          ? "random case"
-                          : (mode == Option::best ? "best case" : "worst case"))
-                  << '\n';
+                          ? "randomly"
+                          : (mode == Option::ascending ? "ascendingly" : "descendingly"))
+                  << " sorted\n";
         if (impl_->check(Option::print))
             std::cout << "Original data:\n" << impl_->data << "\n\n";
 
@@ -136,9 +136,9 @@ bool SortTester::parseOpts(const int argc, const char **argv) const {
             for (auto it = s.cbegin() + 1; it != s.cend(); ++it) {
                 switch (*it) {
                 case 'P': op |= 0x01u << static_cast<int>(Option::print); break;
-                case 'B': op |= 0x01u << static_cast<int>(Option::best); break;
+                case 'A': op |= 0x01u << static_cast<int>(Option::ascending); break;
                 case 'R': op |= 0x01u << static_cast<int>(Option::random); break;
-                case 'W': op |= 0x01u << static_cast<int>(Option::worst); break;
+                case 'D': op |= 0x01u << static_cast<int>(Option::descending); break;
                 case 'i': op |= 0x01u << static_cast<int>(Option::insert); break;
                 case 's': op |= 0x01u << static_cast<int>(Option::select); break;
                 case 'b': op |= 0x01u << static_cast<int>(Option::bubble); break;
@@ -176,9 +176,9 @@ namespace /* unnamed */ {
             << "Usage:\n"
             << "\ttest sort <options>\n"
             << "\n\"options\":\n"
-            << "\t-B  Set test mode as best case\n"
-            << "\t-R  Set test mode as random case\n"
-            << "\t-W  Set test mode as worst case\n"
+            << "\t-A  Set original data ascendingly sorted\n"
+            << "\t-R  Set original data randomly sorted\n"
+            << "\t-D  Set original data descendingly sorted\n"
             << "\t[Note: must specify at least one test mode! default is worst case]\n"
             << "\n\t-P  print the data before and after sorting (default is on for size <= "
                "20, off otherwise)\n"
