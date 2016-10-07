@@ -1,4 +1,5 @@
 #include <chrono>
+#include <iomanip>
 #include <iostream>
 #include <string>
 
@@ -20,7 +21,7 @@ KmpTester::~KmpTester() {}
 
 void KmpTester::test() const {
     using timer = std::chrono::high_resolution_clock;
-    std::chrono::duration<double> diff;
+    std::chrono::duration<long double> diff;
 
     std::ios::sync_with_stdio(false);
     std::cout << "input the main string:\n";
@@ -34,7 +35,8 @@ void KmpTester::test() const {
                      impl_->pattern_.cend());
     diff = timer::now() - start;
 
-    std::cout << "\nmatching finished in " << diff.count() << " seconds\n";
+    std::cout << "\nmatching finished in " << std::setprecision(10) << diff.count()
+              << " seconds\n";
     std::cout << "counts of pattern matches in main: " << count << '\n';
 
     if (count == 0) return;
