@@ -4,7 +4,7 @@ OBJ_PATH := ./obj
 BIN_PATH := .
 
 SOURCES := $(wildcard $(SRC_PATH)/*.cpp)
-DFILES := $(patsubst %.cpp, $(DFILE_PATH)/%.d, $(notdir $(SOURCES)))
+DFILES := $(patsubst %.cpp, $(DFILE_PATH)/%.depen, $(notdir $(SOURCES)))
 OBJECTS := $(patsubst %.cpp, $(OBJ_PATH)/%.o, $(notdir $(SOURCES)))
 EXE := $(BIN_PATH)/test.exe
 
@@ -31,7 +31,7 @@ $(DFILE_PATH):
 
 include $(DFILES)
 
-$(DFILE_PATH)/%.d: $(SRC_PATH)/%.cpp
+$(DFILE_PATH)/%.depen: $(SRC_PATH)/%.cpp
 	set -e; rm -f $@; \
 	$(CXX) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,\($(*F)\)\.o[ :]*,$(OBJ_PATH)/\1.o $@ : ,g' < $@.$$$$ > $@; \
@@ -47,4 +47,4 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 #	prevent make from stopping when a header file is renamed, moved or deleted
 
 clean:
-	rm -f $(OBJ_PATH)/*.o $(DFILE_PATH)/*.d*
+	rm -f $(OBJ_PATH)/*.o $(DFILE_PATH)/*.depen*
