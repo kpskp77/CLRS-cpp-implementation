@@ -101,14 +101,19 @@ void mergeSort(RandomIt first, RandomIt last, Compare comp) {
  * best: O(nlgn); average: O(nlgn); worst: O(nlgn)
  */
 namespace detail {
+    // return last if pos has no children
     template <std::size_t D, class RandomIt>
-    constexpr RandomIt firstChild(RandomIt first, RandomIt pos) {
-        return first + (pos - first) * D + 1;
+    constexpr RandomIt firstChild(RandomIt first, RandomIt last, RandomIt pos) {
+        return ((pos - first) * D + 1 < last - first) ? (first + (pos - first) * D + 1) : last;
     }
+    // return past-the-last child
     template <std::size_t D, class RandomIt>
-    constexpr RandomIt lastChild(RandomIt first, RandomIt pos) {
-        return first + (pos - first + 1) * D;
+    constexpr RandomIt lastChild(RandomIt first, RandomIt last, RandomIt pos) {
+        return (last - firstChild<D>(first, last, pos) > D)
+                   ? (firstChild<D>(first, last, pos) + D)
+                   : last;
     }
+    // trying to get parent of root is undefined behaviour
     template <std::size_t D, class RandomIt>
     constexpr RandomIt parent(RandomIt first, RandomIt pos) {
         return first + (pos - first - 1) / D;
@@ -117,10 +122,10 @@ namespace detail {
     template <std::size_t D, class RandomIt, class Compare>
     void maxHeapify(RandomIt first, RandomIt last, RandomIt pos, Compare comp) {
         using std::swap;
-        while (last - firstChild<D>(first, pos) > 0) {
+        while (true) {
             auto largest = pos;
-            for (auto child = firstChild<D>(first, pos);
-                 child != last && child != lastChild<D>(first, pos) + 1; ++child) {
+            for (auto child = firstChild<D>(first, last, pos);
+                 child != lastChild<D>(first, last, pos); ++child) {
                 if (comp(*largest, *child)) largest = child;
             }
             if (largest == pos) break;
@@ -131,6 +136,7 @@ namespace detail {
 
     template <std::size_t D, class RandomIt, class Compare>
     void buildMaxHeap(RandomIt first, RandomIt last, Compare comp) {
+        if (last - first < 2) return;
         for (auto p = parent<D>(first, last - 1); p - first >= 0; --p)
             maxHeapify<D>(first, last, p, comp);
     }
