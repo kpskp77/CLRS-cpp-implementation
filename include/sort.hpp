@@ -101,41 +101,38 @@ void mergeSort(RandomIt first, RandomIt last, Compare comp) {
  * best: O(nlgn); average: O(nlgn); worst: O(nlgn)
  */
 namespace detail {
-    template <class RandomIt, class Compare>
-    void maxHeapify(RandomIt first, RandomIt last, int index, Compare comp) {
-        using std::swap;
-        /* recursion version
-        if (index > (last - first) / 2) return;
-        auto left = 2 * index;
-        auto right = 2 * index + 1;
-        auto largest = index;
-        if (comp(first[largest - 1], first[left - 1])) largest = left;
-        if (right <= last - first && comp(first[largest - 1], first[right - 1]))
-            largest = right;
-        if (largest != index) {
-            swap(first[index - 1], first[largest - 1]);
-            maxHeapify(first, last, largest, comp);
-        }
-        // end recursion version */
-        //* iteration version
-        decltype(index) left, right, largest;
-        while (index <= (last - first) / 2) {
-            left = 2 * index;
-            right = 2 * index + 1;
-            largest = index;
-            if (comp(first[largest - 1], first[left - 1])) largest = left;
-            if (right <= last - first && comp(first[largest - 1], first[right - 1]))
-                largest = right;
-            if (largest == index) break;
-            swap(first[index - 1], first[largest - 1]);
-            index = largest;
-        }
-        // end iteration version */
+    template <std::size_t D, class RandomIt>
+    constexpr RandomIt firstChild(RandomIt first, RandomIt pos) {
+        return first + (pos - first) * D + 1;
+    }
+    template <std::size_t D, class RandomIt>
+    constexpr RandomIt lastChild(RandomIt first, RandomIt pos) {
+        return first + (pos - first + 1) * D;
+    }
+    template <std::size_t D, class RandomIt>
+    constexpr RandomIt parent(RandomIt first, RandomIt pos) {
+        return first + (pos - first - 1) / D;
     }
 
-    template <class RandomIt, class Compare>
+    template <std::size_t D, class RandomIt, class Compare>
+    void maxHeapify(RandomIt first, RandomIt last, RandomIt pos, Compare comp) {
+        using std::swap;
+        while (last - firstChild<D>(first, pos) > 0) {
+            auto largest = pos;
+            for (auto child = firstChild<D>(first, pos);
+                 child != last && child != lastChild<D>(first, pos) + 1; ++child) {
+                if (comp(*largest, *child)) largest = child;
+            }
+            if (largest == pos) break;
+            swap(*pos, *largest);
+            pos = largest;
+        }
+    }
+
+    template <std::size_t D, class RandomIt, class Compare>
     void buildMaxHeap(RandomIt first, RandomIt last, Compare comp) {
-        for (auto i = (last - first) / 2; i > 0; --i) maxHeapify(first, last, i, comp);
+        for (auto p = parent<D>(first, last - 1); p - first >= 0; --p)
+            maxHeapify<D>(first, last, p, comp);
     }
 } // namespace detail
 
@@ -146,9 +143,9 @@ template <class RandomIt> void heapSort(RandomIt first, RandomIt last) {
 template <class RandomIt, class Compare>
 void heapSort(RandomIt first, RandomIt last, Compare comp) {
     using std::swap;
-    detail::buildMaxHeap(first, last, comp);
+    detail::buildMaxHeap<2>(first, last, comp);
     while (last - first > 1) {
         swap(*first, *--last);
-        detail::maxHeapify(first, last, 1, comp);
+        detail::maxHeapify<2>(first, last, first, comp);
     }
 }

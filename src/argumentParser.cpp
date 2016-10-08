@@ -2,6 +2,7 @@
 
 #include "argumentParser.h"
 #include "kmpTester.h"
+#include "priorityQueueTester.h"
 #include "sortTester.h"
 #include "tester.h"
 
@@ -15,6 +16,7 @@ std::unique_ptr<Tester> parse(int argc, const char **argv) {
         std::string s(argv[1]);
         if (s == "sort") return parse<SortTester>(argc - 2, argv + 2);
         if (s == "kmp") return parse<KmpTester>(argc - 2, argv + 2);
+        if (s == "pQueue") return parse<PriorityQueueTester>(argc - 2, argv + 2);
     }
     printHelpMsg();
     return nullptr;
